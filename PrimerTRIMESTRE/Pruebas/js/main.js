@@ -231,9 +231,8 @@
 
 
 ////////////////////////
- let h11= document.getElementById("h11"); 
- let b1 = document.getElementById("b1");
- let idt1 = document.getElementById("idt1");
+//  let b1 = document.getElementById("b1");
+//  let idt1 = document.getElementById("idt1");
 
 // h11.innerHTML = this;
 // b1.onclick = pressButtonb1;
@@ -283,9 +282,136 @@
 // }
 
 
-//
+//  BUCLES FOR
 let myArray = [1,2,3,4,5,6,7,8,9,10];
-for(let i=0; i<myArray.length;i++){
+/*for(let i=0; i<myArray.length;i++){
     h11.innerHTML += myArray[i]+", ";
-}
+}*/
 
+// let myObj = {
+//     nombre:"Pepe",
+//     edad:34,
+//     email:"pepe@mail.com"
+// }
+
+// for (i in myObj){
+//     h11.innerHTML += "<br>"+i+" : "+myObj[i];
+// }
+
+// for (elem of myObj){
+//     h11.innerHTML +=elem+" , ";
+// }
+
+
+//ejemplo de continue y break
+//continue te los va mostrando todos los numeros impares y el break corta el bucle en el primer numero par
+// for(let i=0; i<myArray.length;i++){
+//     if((myArray[i]%2)==0) 
+//         break; //salta a la siguiente iteracion
+//     else
+//          h11.innerHTML += myArray[i]+", ";
+// }
+
+/*************************** */
+// let result = multiplica(5,6);
+// h11.innerHTML += "<br>Resultado de la multiplicacion: "+result;
+
+// // function multiplica(a,b){
+// //     return a*b;
+// // }
+
+// /*let b1= document.getElementById("b1");*/
+// b1.onclick = pressButtonb1;
+
+// function pressButtonb1() {
+//     let a = document.getElementById("idt1").value;
+//     let b = document.getElementById("idt2").value;
+//     let result2 = realizaMultiplicacion(parseFloat(idt1),parseFloat(idt2));
+
+//     document.getElementById("idt3").value = result2;
+// }
+
+// function realizaMultiplicacion(a,b){
+//     return a*b;
+// }
+
+
+///////////////////////
+//b1.onclick = multiplicaButon;
+var idt1 = document.getElementById("idt1");
+var idt2 = document.getElementById("idt2");
+
+
+// function multiplicaButon(){
+//     let result = 0;
+//     if((idt1.value)=="")
+//         result=multiplica(parseFloat(idt2.value));
+//     else if((idt2.value)=="")
+//         result=multiplica(parseFloat(idt1.value));
+//     else((idt1.value)=="" && (idt2.value)=="")
+//         result=multiplica(idt1.value * idt2.value);
+
+//     document.getElementById("idt3").value = result;
+// }
+
+// function multiplica(op1,op2){
+// if((!op1)&&(!op2))
+//     alert("Debe introducir algun valor");
+// else{
+//     let op1_dentero = op1 || 1;
+//     let op2_dentero = op2 || 1;
+
+//     result= op1_dentero * op2_dentero;
+// }
+// return result;
+// }
+
+  let h11= document.getElementById("h11"); 
+
+multiplica(2,3,4,5,6);
+
+// function multiplica(){
+//     let result = 1;
+
+//     for(op in arguments){
+//         result *= op;
+//     }
+//     h11.innerHTML =result;
+// }
+
+//parametro resto
+// function multiplica(op1,op2, ...resto){
+//     let result = op1 * op2;
+
+//     console.log(resto);
+
+//     for (op of resto){
+//         result *= op;
+//     }
+//     h11.innerHTML =result;
+// }
+
+
+
+/**
+ * Devuelve  la media de las notas si el primer parametro
+ * es un booleano a true. En caso contrario, devuelve suspenso
+ */
+let myArray2 = [true,5,7,9];
+
+function calculaMedia(){
+    let result = 0;
+    if((typeof arguments[0])=="boolean" && arguments[0]){
+        for(let i =1; i<arguments.length;i++)
+          if((typeof arguments[i])=="number")
+            result += arguments[i];
+                   
+        result /= (arguments.length-1);     
+        
+        h11.innerHTML = "Media: "+result;
+    }
+    else{
+        h11.innerHTML = "suspenso";
+    }
+
+}
