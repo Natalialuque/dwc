@@ -21,8 +21,8 @@
 
 // console.log("Nombre es: " + name2+ " .Tipo:"+typeof name2)
 
-    // document.getElementById("h11").style.backgroundColor = "red";
-    // document.getElementById("h11").style.color = "white";
+// document.getElementById("h11").style.backgroundColor = "red";
+// document.getElementById("h11").style.color = "white";
 
 // }
 
@@ -46,7 +46,7 @@
     }*/
 
 
- //MALLL       
+//MALLL       
 /* function main (s, str){
         var a = "pepe";
         document.getElementById("h11").innerHTML=s;
@@ -190,7 +190,7 @@
 // let b = 5;
 
 // h11.innerHTML = "valor de a "+a;
- 
+
 // a ??= b;
 
 // h11.innerHTML += "<br> Nuevo valor de a "+a;
@@ -278,12 +278,12 @@
 //             h11.innerHTML += parseFloat(idt1.value)+10 ;
 //     }
 
-    
+
 // }
 
 
 //  BUCLES FOR
-let myArray = [1,2,3,4,5,6,7,8,9,10];
+let myArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 /*for(let i=0; i<myArray.length;i++){
     h11.innerHTML += myArray[i]+", ";
 }*/
@@ -337,19 +337,17 @@ let myArray = [1,2,3,4,5,6,7,8,9,10];
 
 
 ///////////////////////
-//b1.onclick = multiplicaButon;
-var idt1 = document.getElementById("idt1");
-var idt2 = document.getElementById("idt2");
 
 
-// function multiplicaButon(){
+
+// function multiplicaButon() {
 //     let result = 0;
-//     if((idt1.value)=="")
-//         result=multiplica(parseFloat(idt2.value));
-//     else if((idt2.value)=="")
-//         result=multiplica(parseFloat(idt1.value));
-//     else((idt1.value)=="" && (idt2.value)=="")
-//         result=multiplica(idt1.value * idt2.value);
+//     if ((idt1.value) == "")
+//         result = multiplica(parseFloat(idt2.value));
+//     else if ((idt2.value) == "")
+//         result = multiplica(parseFloat(idt1.value));
+//     else ((idt1.value) == "" && (idt2.value) == "")
+//     result = multiplica(idt1.value * idt2.value);
 
 //     document.getElementById("idt3").value = result;
 // }
@@ -366,9 +364,8 @@ var idt2 = document.getElementById("idt2");
 // return result;
 // }
 
-  let h11= document.getElementById("h11"); 
 
-multiplica(2,3,4,5,6);
+//multiplica(2,3,4,5,6);
 
 // function multiplica(){
 //     let result = 1;
@@ -397,21 +394,88 @@ multiplica(2,3,4,5,6);
  * Devuelve  la media de las notas si el primer parametro
  * es un booleano a true. En caso contrario, devuelve suspenso
  */
-let myArray2 = [true,5,7,9];
 
-function calculaMedia(){
-    let result = 0;
-    if((typeof arguments[0])=="boolean" && arguments[0]){
-        for(let i =1; i<arguments.length;i++)
-          if((typeof arguments[i])=="number")
-            result += arguments[i];
-                   
-        result /= (arguments.length-1);     
-        
-        h11.innerHTML = "Media: "+result;
-    }
-    else{
-        h11.innerHTML = "suspenso";
-    }
 
+// let myArray2 = [true, 5, 7, 9];
+
+// function calculaMedia() {
+//     let result = 0;
+//     if ((typeof arguments[0]) == "boolean" && arguments[0]) {
+//         for (let i = 1; i < arguments.length; i++)
+//             if ((typeof arguments[i]) == "number")
+//                 result += arguments[i];
+
+//         result /= (arguments.length - 1);
+
+//         h11.innerHTML = "Media: " + result;
+//     }
+//     else {
+//         h11.innerHTML = "suspenso";
+//     }
+
+// }
+
+
+//GENERADORES (NO CAEN) CONTADOR QUE DEVUELVE LOS BOOLEANOS
+// let myArray4 = [1, true, 3, "pepe", 5, false, false, 8, 9, 10];
+
+// let counter = contadorFuction();
+// let data = counter.next();
+
+// while (!data.done){
+
+//     h11.innerHTML += "<br>"+data.value + ", ";
+//     data = counter.next();
+// }
+
+
+// function* contadorFuction() {
+//     let i = 0;
+//     while(i <myArray4.length){
+//         if(typeof myArray4[i] === "boolean")
+//             yield myArray4[i];
+
+//         i++;
+//     }
+// }
+
+
+//FUNCUCIONES ANONIMAS
+//b1.onclick = multiplicaButon;
+let h11 = document.getElementById("h11");
+let b1 = document.getElementById("b1");
+let b2 = document.getElementById("b2");
+var idt1 = document.getElementById("idt1");
+var idt2 = document.getElementById("idt2");
+
+b1.onclick =function() {
+    idt3.value= parseFloat(idt2.value) * parseFloat(idt1.value);
+}
+
+//function main 
+// document.body.onload = function() {
+//     alert("EMPEZANDO.....");
+// }
+
+//operador arrow 
+// a = "pepe";
+// b="garcia";
+// document.body.onload = () => {
+//     alert("EMPEZANDO....."+a+b);
+// }
+
+// //Cada uno manda un tipo de dato por el tipo de llamada que hace 
+// b1.onclick=() => {
+//         alert("EMPEZANDO....."+this);
+//         console.log("arguments en => es : "+arguments);
+// }
+
+// b1.onclick= function() {
+//     idt3.value=this;
+// }
+
+myArray2=[true, false, 1,4,"pepe"];
+
+for ( i in myArray2){
+    h11.innerHTML += myArray[i]+", ";
 }
