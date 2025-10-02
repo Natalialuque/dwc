@@ -476,6 +476,36 @@ b1.onclick =function() {
 
 myArray2=[true, false, 1,4,"pepe"];
 
-for ( i in myArray2){
-    h11.innerHTML += myArray[i]+", ";
+// for ( i in myArray2){
+//     h11.innerHTML += myArray[i]+", ";
+// }
+
+//VALIDAR PASSDOWORD DE CUAER LADP.
+let login = document.getElementById("login");
+let password = document.getElementById("password");
+let password2 = document.getElementById("password2");
+let error2 = document.getElementById("h11");
+b1.onclick= function(){
+try{
+
+    if(login.value == "")throw "El campo login no puede estar vacio";
+    else if(password.value == "")throw "El campo password no puede estar vacio";
+    else if(password2.value == "")throw "Repite la contraseña ";
+    else if(password.value != password2.value)throw "la contraseñas no coinciden";
+    else alert("Usuario registrado correctamente");
+    
+
+}catch (err){
+    let error = document.getElementById("error");
+    error.innerHTML = "error: " + err;
 }
+finally{
+    login.value = "";
+    password.value = "";
+    password2.value = "";
+    error2.value = "register";
+}
+
+ }
+
+
