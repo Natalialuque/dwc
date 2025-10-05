@@ -4,32 +4,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="/main.js" defer></script>
+    <script src="main.js" defer></script>
 
 </head>
 <body>
     <h1>Ejercicios de JavaScript Básico I</h1>
+   
     <h2>Ejercicio 1</h2>
     <div>
-      <label>Nombre:</label> 
-      <input type="text" name="" id="nombre">
-      <label>Apellido:</label> 
-      <input type="text" name="" id="apellido">
-      <label>Curso:</label> 
-      <input type="text" name="" id="curso">
-      <label>Nota1:</label> 
-      <input type="text" name="" id="nota1">
-      <label>Nota2:</label> 
-      <input type="text" name="" id="nota2">
-      <label>Nota3:</label> 
-      <input type="text" name="" id="nota3">
-      <button id="añadir">Añadir</button>
-        <br>
-      <h5>ALUMNOS AÑADIDOS</h5>
-      <p id="alumnos"> </p>
+      <label for="nombre">Nombre: </label>
+    <input type="text" id="nombre"><br><br>
+
+    <label for="ape">Apellidos: </label>
+    <input type="text" id="ape"><br><br>
+
+    <label for="cur">Curso: </label>
+    <input type="text" id="cur"><br><br>
+
+    <label for="nota1">Nota 1: </label>
+    <input type="number" max="10" min="1" id="nota1"> <br><br>
+
+    <label for="nota2">Nota 2: </label>
+    <input type="number" max="10" min="1" id="nota2"> <br><br>
+
+    <label for="nota3">Nota Final: </label>
+    <input type="number" max="10" min="1" id="nota3"> <br><br>
+
+    <button id="añadir">Añadir Alumno</button>
+
+    <h3>Alumnos: </h3> 
+    <p>Nombre,Apellidos,Curso,Notas</p>
+    <p id="alum"></p>
+    <hr>
  
     </div>
+    
     <h2>Ejercicio 2</h2>
+    <div>
+      <label>Valor 1</label>
+      <input type="text" name="" id="valor1">
+      <label>Valor 2</label>
+      <input type="text" name="" id="valor2">
+      
+
+    </div>
     <h2>Ejercicio 3</h2>
     <h2>Ejercicio 4</h2>
     <h2>Ejercicio 5</h2>
