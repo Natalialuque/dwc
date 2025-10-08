@@ -142,7 +142,7 @@ calcula.onclick = function(){
         alert ("los valores deben ser numeros");
     }
 
-    //Necesitamos aplicarle esto a la suma ya que el operador + tambien se usa para concatenacion
+    //Necesitamos aplicarle esto a la suma ya que el operador + tambien se usa para concatenacion, para que lo interprete como numero
     suma.innerHTML= Number(nume1.value)+Number(nume2.value);
     resta.innerHTML=nume1.value-nume2.value;
     multiplicacion.innerHTML=nume1.value*nume2.value;
@@ -157,8 +157,77 @@ calcula.onclick = function(){
         resto.innerHTML = nume1.value % nume2.value;
     }
 
-    
 }
+
+/**EJERCICIO 7 */
+//variables
+//variables
+let not1 = document.getElementById("not1");
+let not2 = document.getElementById("not2");
+let not3 = document.getElementById("not3");
+let cal = document.getElementById("cal");
+let calificacion = document.getElementById("calificacion");
+
+//ejercicio
+cal.onclick = function () {
+  let nota1 = parseFloat(not1.value);
+  let nota2 = parseFloat(not2.value);
+  let nota3 = parseFloat(not3.value);
+
+  // Validación
+  if (isNaN(nota1) || isNaN(nota2) || isNaN(nota3)) {
+    calificacion.innerHTML = "Introduce las tres notas numéricas.";
+    return;
+  }
+
+  let notamedia = (nota1 + nota2 + nota3) / 3;
+
+  switch (true) {
+    case notamedia < 5:
+      calificacion.innerHTML = "Suspenso";
+      break;
+    case notamedia < 7:
+      calificacion.innerHTML = "Aprobado";
+      break;
+    case notamedia < 8.5:
+      calificacion.innerHTML = "Notable";
+      break;
+    case notamedia <= 10:
+      calificacion.innerHTML = "Sobresaliente";
+      break;
+    default:
+      calificacion.innerHTML = "Alguna nota introducida no es válida";
+  }
+};
+
+
+/**EJERCICIO 8*/
+//variables 
+let piramide1 = document.getElementById("piramide1");
+let piramidee = document.getElementById("piramidee");
+
+piramidee.onclick = function (){
+    for (let i = 1; i <= 50; i++) {
+  for (let j = 0; j < i; j++) {
+    piramide1.innerHTML += i; 
+  }
+  piramide1.innerHTML += "\n";
+}
+};
+
+/**EJERCICIO 9*/
+//variables 
+let piramide2 = document.getElementById("piramide2");
+let piramidee2 = document.getElementById("piramidee2");
+
+piramidee2.onclick = function (){
+    for (let i = 1; i <= 50; i++) {
+  for (let j = 1; j <= i; j++) {
+    piramide2.innerHTML += j; 
+  }
+  piramide2.innerHTML += "\n";
+}
+};
 
 
 
