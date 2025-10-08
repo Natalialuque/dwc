@@ -1,52 +1,52 @@
-let info = document.getElementById("info");
+// let info = document.getElementById("info");
 
-let obj1={
-    nombre:"Pepe",
-    edad:34,
-    email:"pepe@gamil.com"
-}
+// let obj1={
+//     nombre:"Pepe",
+//     edad:34,
+//     email:"pepe@gamil.com"
+// }
 
-//define objetos, el writable nos permite modificar obviando las protecciones 
-Object.defineProperty(obj1,"color",{writable:true ,enumerable:true, value:"blue"});
-obj1.color="yellow";
+// //define objetos, el writable nos permite modificar obviando las protecciones 
+// Object.defineProperty(obj1,"color",{writable:true ,enumerable:true, value:"blue"});
+// obj1.color="yellow";
 
 
-let obj2= new Object({
-    nombre:"Maria",
-    edad:24,
-    email:"maria@gamil.com"
-});
+// let obj2= new Object({
+//     nombre:"Maria",
+//     edad:24,
+//     email:"maria@gamil.com"
+// });
 
-Object.defineProperties(obj2, {
-    "color" : {writable: true, enumerable: false, value:"red"},
-    "notas": {configurable:true,writable: true, enumerable:true, value: [6,7,8]}
+// Object.defineProperties(obj2, {
+//     "color" : {writable: true, enumerable: false, value:"red"},
+//     "notas": {configurable:true,writable: true, enumerable:true, value: [6,7,8]}
 
-});
-obj2.colordeFondo ="green";
-Object.preventExtensions(obj2); 
+// });
+// obj2.colordeFondo ="green";
+// Object.preventExtensions(obj2); 
 
-if(Object.isExtensible(obj2)){
-    obj2.colordeFondo="green"
-}
-else alert("No es extensible")
+// if(Object.isExtensible(obj2)){
+//     obj2.colordeFondo="green"
+// }
+// else alert("No es extensible")
 
-Object.seal(obj2);
-delete obj2.notas;
+// Object.seal(obj2);
+// delete obj2.notas;
 
-Object.freeze(obj2); //lo que haga despues de esto no lo realiza
+// Object.freeze(obj2); //lo que haga despues de esto no lo realiza
 
 
 //let tmpObj = obj2; //aunque hagamos una copia de un objeto congelado, no podemos realizar cambios. Para haccer esto tenemos que crear el nuevo objeto y pasarle las propiedades 
 
-let tmpObj = new Object;
-for(prop of Object.getOwnPropertyNames(obj2)){
-    console.log("Propiedad"+prop+". value:"+obj2[prop]);
-}
+// let tmpObj = new Object;
+// for(prop of Object.getOwnPropertyNames(obj2)){
+//     console.log("Propiedad"+prop+". value:"+obj2[prop]);
+// }
 
-tmpObj.aprobado = true;
-tmpObj.color="Broown";
+// tmpObj.aprobado = true;
+// tmpObj.color="Broown";
 
-console.log(tmpObj);
+// console.log(tmpObj);
 
 
 //haz que estos objetos que vienen de una api de 3 no se le puedan añadir propiedades hasta que este en modo administrador (pregunta examen)
@@ -71,3 +71,28 @@ console.log(tmpObj);
 // console.log("Recorriendo obj2:")
 // for(prop of Object.keys(obj2))
 //     console.log("Propiedad"+prop+". value:"+obj2[prop]);
+
+//////////////////////////////////////////////////////
+
+//eval("document.open();document.write('<h1>web eliminada</h1>')");
+
+//opes mates
+let info = document.getElementById("info");
+//info.innerHTML=Math.floor(4.1);
+
+//String
+let myString = "loren";
+//info.innerHTML= myString.charAt(100);
+//info.innerHTML = myString.indexOf("a");
+
+info.innerHTML = myString.charCodeAt("a");
+info.innerHTML = String.fromCharCode("0x0bf0");
+info.innerHTML=String.fromCodePoint("0x0bf0");
+
+for(let encontrado of myString.matchAll("en")){
+    console.log(encontrado.index);
+}
+
+let mySplice = myString.slice(100,150);
+console.log(mySplice);
+
