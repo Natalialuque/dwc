@@ -85,14 +85,83 @@ let myString = "loren";
 //info.innerHTML= myString.charAt(100);
 //info.innerHTML = myString.indexOf("a");
 
-info.innerHTML = myString.charCodeAt("a");
-info.innerHTML = String.fromCharCode("0x0bf0");
-info.innerHTML=String.fromCodePoint("0x0bf0");
+// info.innerHTML = myString.charCodeAt("a");
+// info.innerHTML = String.fromCharCode("0x0bf0");
+// info.innerHTML=String.fromCodePoint("0x0bf0");
 
-for(let encontrado of myString.matchAll("en")){
-    console.log(encontrado.index);
-}
+// for(let encontrado of myString.matchAll("en")){
+//     console.log(encontrado.index);
+// }
 
-let mySplice = myString.slice(100,150);
-console.log(mySplice);
+// let mySplice = myString.slice(100,150);
+// console.log(mySplice); 
 
+
+let myArray = new Array(1,true,{nombre:"pepe", apellidos:"Garcia perez"},45.687,Math.PI,false);
+
+//myArray[10001]="Mery"; //esto no se suele hacer porque da errores
+
+// myArray.push([1,2,3,4,5]); //añade al final
+// myArray.push(2025);
+
+// myArray.pop(); //solo elimina el ultimo
+
+// myArray.unshift("hola"); //añade al principio
+// myArray.shift();//borra al principio
+
+//myArray.reverse();//gira el array
+//let prueba = myArray.sort(); //ordena
+
+
+myArray.splice(3,2,false,9999,"Pepe","pepe@mail.com"); //añade o borra en cualquier sitio
+
+// for ( let i in myArray){
+//     if(i == myArray.length -1){
+//          info.innerHTML += myArray[i];
+//     }else{
+//             info.innerHTML += myArray[i]+" - ";
+//     }
+// }
+
+/**
+ * numeros que sean negativos true y false 
+ * y viceversa. Los string se le antepongo Nombre
+ */
+
+let myArray1 = new Array(1,true,"pepe",45.58,"maria",false);
+
+let myArrayResult = myArray1.map(function (elem){ //el break no es necesario como tal pero nos sirve por si hacemos alguna modificacion ya tenerlo
+
+    switch(typeof elem){
+         case "number":
+             return(elem * -1);
+             break;
+         case "boolean":
+            return !elem;     
+            break;        
+         case "string":
+            return "Nombre: " + elem;
+            break;
+    }
+})
+
+info.innerHTML=myArrayResult;
+
+
+// let myArrayResult = new Array();
+
+// for(let i in myArray1){
+//     switch(typeof myArray1[i]){
+//         case "number":
+//             myArrayResult.push(myArray1[i]+ -1);
+//             break;
+//         case "boolean":
+//             myArrayResult.push(!myArray1[i]);
+//             break;
+//         case "string":
+//             myArrayResult.push("Nombre: "+myArray1[i])
+//             break;
+//     }
+// }
+
+// info.innerHTML= myArrayResult;
