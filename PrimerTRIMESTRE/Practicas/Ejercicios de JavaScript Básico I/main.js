@@ -229,5 +229,20 @@ piramidee2.onclick = function (){
 }
 };
 
+/**EJERCICIO 10 */
+//variables
+let valornormal = document.getElementById("arrow");
+let botonArrow = document.getElementById("arrowresul");
+let result = document.getElementById("arrowResultado");
+
+//ejercicio 
+botonArrow.onclick = () => {
+  if (!isNaN(valornormal.value)) {
+    result.innerHTML = valornormal.value % 2 === 0 ? "El número es par" : "El número es impar";
+  } else {
+    result.innerHTML = "Por favor, introduce un número válido.";
+  }
+};
+
 
 
