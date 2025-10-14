@@ -130,22 +130,22 @@ myArray.splice(3,2,false,9999,"Pepe","pepe@mail.com"); //añade o borra en cualq
 
 let myArray1 = new Array(1,true,"pepe",45.58,"maria",false);
 
-let myArrayResult = myArray1.map(function (elem){ //el break no es necesario como tal pero nos sirve por si hacemos alguna modificacion ya tenerlo
+// let myArrayResult = myArray1.map(function (elem){ //el break no es necesario como tal pero nos sirve por si hacemos alguna modificacion ya tenerlo
 
-    switch(typeof elem){
-         case "number":
-             return(elem * -1);
-             break;
-         case "boolean":
-            return !elem;     
-            break;        
-         case "string":
-            return "Nombre: " + elem;
-            break;
-    }
-})
+//     switch(typeof elem){
+//          case "number":
+//              return(elem * -1);
+//              break;
+//          case "boolean":
+//             return !elem;     
+//             break;        
+//          case "string":
+//             return "Nombre: " + elem;
+//             break;
+//     }
+// })
 
-info.innerHTML=myArrayResult;
+// info.innerHTML=myArrayResult;
 
 
 // let myArrayResult = new Array();
@@ -165,3 +165,45 @@ info.innerHTML=myArrayResult;
 // }
 
 // info.innerHTML= myArrayResult;
+
+/**FOREACH */
+// myArray1.forEach(function(elem,indice,arrayActual){    
+
+//     console.log("Array completo:"+arrayActual);
+
+//     info.innerHTML +="<br>Elemento actual es: "+elem+" , situado en la posicion: "+indice;
+// });
+
+
+/**HORAS */
+//let fecha = document.getElementById("fecha");
+
+let dateNow = new Date();
+let myDate = new Date(0);
+
+
+//info.innerHTML = myDate;
+
+//info.innerHTML = "La hora en tu ciudad es " + dateNow.toUTCString() + " añadiendo un offset de " + dateNow.getTimezoneOffset();
+
+//si mas de las 8 de la tarde que pongo colores de la web mas oscuros 
+let dateOscuro = new Date();
+let main = document.getElementById("main");
+
+if((dateOscuro.getHours()>=20)  && ( dateOscuro.getMonth()>=9 || dateOscuro.getMonth()<= 2) ){
+    main.style.backgroundColor= "black";
+}else{
+    main.style.backgroundColor="white";
+}
+
+let fecha = document.getElementById("fecha");
+
+let bCalcula = document.getElementById("bCalcula").onclick=function(){
+
+    let dateNow = new Date();
+    let datebirth = new Date(fecha.value);
+    let result = dateNow - datebirth/1000;
+
+    info.innerHTML="Llevas vivo "+(result) +" segundos";
+
+};

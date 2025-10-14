@@ -109,14 +109,22 @@
   //BOLEANOS --> escriben directamente en el código sin comillas ni símbolos especiales.
       //tiene operadore importantes && || !
   
-      let info = document.getElementById("info");
+      // let info = document.getElementById("info");
 
-      let edad = 20;
-      let esMayorDeEdad = edad >= 18; // true
+      // let edad = 20;
+      // let esMayorDeEdad = edad >= 18; // true
 
-        if (esMayorDeEdad) {
-          info.innerHTML=("Puede entrar");
-        } else {
-          info.innerHTML=("No puede entrar");
-}
+        //   if (esMayorDeEdad) {
+        //     info.innerHTML=("Puede entrar");
+        //   } else {
+        //     info.innerHTML=("No puede entrar");
+        //}
+
+  //ENTEROS --> valores numéricos escritos directamente en el código, y pueden expresarse en distintas bases: decimal, binaria, octal y hexadecimal.
+        let decimal = 42;       // base 10
+        let binario = 0b101010; // base 2 → 42
+        let octal = 0o52;       // base 8 → 42
+        let hexa = 0x2A;        // base 16 → 42
+
+  //COMA FLOTANTE --> 
 

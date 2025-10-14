@@ -24,6 +24,19 @@ html, body {
     height: 100%;
 }
 
+input{
+    padding: 1%;
+    margin: 1%;
+    height: 15%;
+}
+
+a{
+    text-decoration: none;
+    cursor: pointer;
+    color: lightblue;
+}
+
+
 aside {
     height: 80%;
     width: 30%;
