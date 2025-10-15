@@ -1,4 +1,4 @@
-/**EJERCICIO 1 */
+;/**EJERCICIO 1 */
 
     //variables 
     let nombre = document.getElementById("nombre");
@@ -245,4 +245,219 @@ botonArrow.onclick = () => {
 };
 
 
+/**EJERCICIO 11 */
+//variables 
+let botonPum = document.getElementById("pum");
+let resulPum = document.getElementById("Pum");
 
+//ejercicio 
+botonPum.onclick = function(){
+  for(let i=1; i<=100;i++){
+    if (i % 7 === 0 || i % 10 === 7) {
+      resulPum.innerHTML+= "PUM\n"; 
+    } else {
+      resulPum.innerHTML += i + ", ";
+    }
+  }
+};
+
+/**EJERCICIO 12 */
+//variables 
+let botonConteo = document.getElementById("conteo");
+let resulConteo= document.getElementById("Conteo");
+
+botonConteo.onclick = function(){
+ 
+}
+
+
+/**EJERCICIO 13*/
+//variables 
+let botonDados = document.getElementById("lanzar");
+let resulDados = document.getElementById("resultadoLanzar");
+
+botonDados.onclick = function () {
+  let array = Array(13).fill(0); // índices del 2 al 12
+
+  for (let i = 1; i <= 36000; i++) {
+    let dado1 = Math.floor(Math.random() * 6) + 1;
+    let dado2 = Math.floor(Math.random() * 6) + 1;
+    let suma = dado1 + dado2;
+    array[suma]++;
+  }
+
+  resulDados.innerHTML = ""; // limpiar antes de mostrar
+
+  for (let i = 2; i <= 12; i++) {
+    resulDados.innerHTML += "Suma " + i + ": " + array[i] + " veces<br>";
+  }
+};
+
+
+/**EJERCICIO  14 */
+//variables 
+let numero = document.getElementById("numeroInput");
+let botonAgregar = document.getElementById("agregar");
+let botonFin = document.getElementById("finalizar");
+let resultadoLista = document.getElementById("resultado");
+
+let numeros =[];
+let entradaFinalizada=false;
+//ejercicio 
+botonAgregar.onclick = function(){
+   if (entradaFinalizada) {
+    alert("Ya se han introducido todos los números. Pulsa 'Finalizar entrada'.");
+    return;
+  }
+
+  if (parseInt(numero.value) === 0) {
+    entradaFinalizada = true;
+    alert("Entrada finalizada. Pulsa 'Finalizar entrada' para ver resultados.");
+  } else {
+    numeros.push(parseInt(numero.value));
+    numero.value = "";
+    numero.focus();
+  }
+
+}
+
+botonFin.onclick = function(){
+
+  //Mayor y menor con métodos
+    const mayor = Math.max(...numeros);
+    const menor = Math.min(...numeros);
+   
+   // Ocurrencias
+  let ocurrencias = {};
+  for (let i = 0; i < numeros.length; i++) {
+    let num = numeros[i];
+    ocurrencias[num] = (ocurrencias[num] || 0) + 1;
+  }
+    
+    
+    resultadoLista.innerHTML += "Orden normal: " + numeros.join(", ") + "<br>";
+    resultadoLista.innerHTML+="Orden descentende: "+ numeros.sort((a, b) => b - a)+"<br>";
+    resultadoLista.innerHTML+= "numero mayor: "+mayor+ " (" + ocurrencias[mayor] + " veces)<br>";;
+    resultadoLista.innerHTML+= "numero menor: "+menor+ " (" + ocurrencias[menor] + " veces)<br>";;
+
+}
+
+/**EJERCICIO  15 */
+//variables 
+let valores = document.getElementById("valores");
+let elementos = document.getElementById("elementos");
+let invertir = document.getElementById("invierte");
+let resul = document.getElementById("resu");
+let botonAgregar2 = document.getElementById("agregar2");
+
+
+let array = [];
+//ejercicio 
+
+botonAgregar2.onclick = function(){
+  let dato;
+
+  if (!isNaN(elementos.value)) {
+    dato = parseFloat(elementos.value); // número
+  } else if (elementos.value.toLowerCase() === "true" || elementos.value.toLowerCase() === "false") {
+    dato = elementos.value.toLowerCase() === "true"; // booleano
+  } else {
+    dato = elementos.value; // texto
+  }
+
+  array.push(dato);
+  elementos.value="";
+}
+
+
+
+invertir.onclick = function(){
+  // Invertir manualmente con bucle
+  let invertido = [];
+  for (let i = array.length - 1; i >= 0; i--) {
+    invertido.push(array[i]);
+  }
+
+resul.innerHTML = invertido.join(", ") + "</p>";
+}
+
+
+
+
+
+/**EJERCICIO  16*/
+//variables 
+let lon = document.getElementById("longitud");
+let longitud = document.getElementById("longi");
+let botonGenerar = document.getElementById("generar");
+let resultadoContraseñas = document.getElementById("resultadoContras");
+
+//ejercicio 
+botonGenerar.onclick = function () {
+
+  if (isNaN(longitud.value) || longitud.value <= 0) {
+    alert("Por favor, introduce una longitud válida mayor que 0.");
+    return;
+  }
+
+  const caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()-_=+[]{}<>?/|";
+  let contraseña = "";
+
+  for (let i = 0; i < longitud.value; i++) {
+    const indice = Math.floor(Math.random() * caracteres.length);
+    contraseña += caracteres[indice];
+  }
+
+  resultadoContraseñas.innerHTML = contraseña;
+}
+
+/**EJERCICIO  17 */
+//variables 
+let n1= document.getElementById("number1");
+let n2 = document.getElementById("number2");
+let bot = document.getElementById("comparar");
+let re = document.getElementById("resultado5");
+//ejercicio 
+function calcularMenor(a, b) {
+  return a < b ? a : b;
+}
+
+bot.onclick = function () {
+  let valor1 = parseInt(n1.value);
+  let valor2 = parseInt(n2.value);
+
+  if (isNaN(valor1) || isNaN(valor2)) {
+    alert("Por favor, introduce dos números válidos.");
+    return;
+  }
+
+  let menor = calcularMenor(valor1, valor2);
+  let mayor = valor1 === menor ? valor2 : valor1;
+
+  let lista = [];
+  for (let i = menor + 1; i < mayor; i++) {
+    lista.push(i);
+  }
+
+  re.innerHTML = " Menor: "+menor+"Mayor: "+mayor+"Números entre ellos: "+lista.join(" ,");
+}
+
+
+/**EJERCICIO  18 */
+//variables 
+
+//ejercicio 
+
+
+
+/**EJERCICIO  19*/
+//variables 
+
+//ejercicio 
+
+
+
+/**EJERCICIO  20 */
+//variables 
+
+//ejercicio 
