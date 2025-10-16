@@ -445,19 +445,161 @@ bot.onclick = function () {
 
 /**EJERCICIO  18 */
 //variables 
-
+let numeOp = document.getElementById("numero");
+let op = document.getElementById("opcion");
+let but = document.getElementById("ejecutar");
+let resul17 = document.getElementById("resultado17");
 //ejercicio 
+// Funciones específicas
+function esMultiploDe2(n) {
+  return n % 2 === 0;
+}
 
+function esMultiploDe3(n) {
+  return n % 3 === 0;
+}
+
+function esMultiploDe5(n) {
+  return n % 5 === 0;
+}
+
+but.onclick = function () {
+  const numero = parseInt(numeOp.value);
+  const opcion = parseInt(op.value);
+
+  if (isNaN(numero)) {
+    alert("Introduce un número válido.");
+    return;
+  }
+
+  switch (opcion) {
+    case 1:
+      resul17.innerHTML = esMultiploDe2(numero)
+        ? numero + "SÍ es múltiplo de 2."
+        : numero+" NO es múltiplo de 2.";
+      break;
+    case 2:
+      resul17.innerHTML = esMultiploDe3(numero)
+        ? numero+ "SÍ es múltiplo de 3."
+        : numero +" NO es múltiplo de 3.";
+      break;
+    case 3:
+      resul17.innerHTML = esMultiploDe5(numero)
+        ? numero +" SÍ es múltiplo de 5."
+        : numero +" NO es múltiplo de 5.";
+      break;
+    case 0:
+      resul17.innerHTML = "<p>Programa finalizado.</p>";
+      break;
+    default:
+      resul17.innerHTML = "Opción no válida.";
+  }
+}
 
 
 /**EJERCICIO  19*/
 //variables 
+let inputNombre = document.getElementById("nombre19");
+let inputApellido = document.getElementById("apellido19");
+let inputHoras = document.getElementById("horas");
+let radiosTurno = document.getElementsByName("turno");
+let btnAgregar = document.getElementById("agregar19");
+let btnFinalizar = document.getElementById("finalizar19");
+let divResultados = document.getElementById("resultado19");
+let divTotalBruto = document.getElementById("totalBruto");
 
 //ejercicio 
+let trabajadores = [];
 
+// Función para obtener el turno seleccionado
+function obtenerTurnoSeleccionado() {
+  for (let i = 0; i < radiosTurno.length; i++) {
+    if (radiosTurno[i].checked) return radiosTurno[i].value;
+  }
+  return null;
+}
+
+// Función para calcular salario bruto
+function calcularSalarioBruto(horas, turno) {
+  let tarifa = 0;
+  if (turno === "m") tarifa = 25;
+  else if (turno === "t") tarifa = 30;
+  else if (turno === "n") tarifa = 35;
+  return horas * tarifa;
+}
+
+// Función para calcular salario neto
+function calcularSalarioNeto(bruto) {
+  if (bruto < 600) return bruto * 0.92;
+  else if (bruto <= 1000) return bruto * 0.90;
+  else return bruto * 0.88;
+}
+
+// Evento para agregar trabajador
+btnAgregar.onclick = function () {
+  const nombre = inputNombre.value.trim();
+  const apellido = inputApellido.value.trim();
+  const horas = parseFloat(inputHoras.value);
+  const turno = obtenerTurnoSeleccionado();
+
+  if (!nombre || !apellido || isNaN(horas) || !turno) {
+    alert("Por favor, completa todos los campos.");
+    return;
+  }
+
+  const bruto = calcularSalarioBruto(horas, turno);
+  const neto = calcularSalarioNeto(bruto);
+
+  trabajadores.push({ nombre, apellido, bruto, neto });
+
+  divResultados.innerHTML += `<p><strong>${nombre} ${apellido}</strong> → Bruto: ${bruto.toFixed(2)} €, Neto: ${neto.toFixed(2)} €</p>`;
+
+  // Limpiar campos
+  inputNombre.value = "";
+  inputApellido.value = "";
+  inputHoras.value = "";
+  for (let i = 0; i < radiosTurno.length; i++) radiosTurno[i].checked = false;
+};
+
+// Evento para finalizar y mostrar total
+btnFinalizar.onclick = function () {
+  const total = trabajadores.reduce((sum, t) => sum + t.bruto, 0);
+  divTotalBruto.innerHTML = `<h4>Total de salarios brutos abonados: ${total.toFixed(2)} €</h4>`;
+};
 
 
 /**EJERCICIO  20 */
 //variables 
+// Constantes globales
+let inputIntento = document.getElementById("intento20");
+let btnComprobar = document.getElementById("comprobar");
+let divMensaje = document.getElementById("mensaje");
 
 //ejercicio 
+// Número secreto generado al cargar la página
+let numeroSecreto = Math.floor(Math.random() * 100) + 1;
+let intentos = 0;
+
+btnComprobar.onclick = function () {
+  const intento = parseInt(inputIntento.value);
+
+  if (isNaN(intento) || intento < 1 || intento > 100) {
+    alert("Introduce un número válido entre 1 y 100.");
+    return;
+  }
+
+  intentos++;
+
+  if (intento === numeroSecreto) {
+    divMensaje.innerHTML = `<p> ¡Correcto! El número secreto era ${numeroSecreto}. Lo has adivinado en ${intentos} intento(s).</p>`;
+    btnComprobar.disabled = true;
+    inputIntento.disabled = true;
+  } else if (intento < numeroSecreto) {
+    divMensaje.innerHTML = `<p>Mi número es mayor que ${intento}.</p>`;
+  } else {
+    divMensaje.innerHTML = `<p>Mi número es menor que ${intento}.</p>`;
+  }
+
+  inputIntento.value = "";
+  inputIntento.focus();
+};
