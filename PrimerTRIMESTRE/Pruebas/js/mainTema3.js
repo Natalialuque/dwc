@@ -178,32 +178,38 @@ let myArray1 = new Array(1,true,"pepe",45.58,"maria",false);
 /**HORAS */
 //let fecha = document.getElementById("fecha");
 
-let dateNow = new Date();
-let myDate = new Date(0);
-
-
-//info.innerHTML = myDate;
-
-//info.innerHTML = "La hora en tu ciudad es " + dateNow.toUTCString() + " añadiendo un offset de " + dateNow.getTimezoneOffset();
-
-//si mas de las 8 de la tarde que pongo colores de la web mas oscuros 
-let dateOscuro = new Date();
-let main = document.getElementById("main");
-
-if((dateOscuro.getHours()>=20)  && ( dateOscuro.getMonth()>=9 || dateOscuro.getMonth()<= 2) ){
-    main.style.backgroundColor= "black";
-}else{
-    main.style.backgroundColor="white";
-}
-
-let fecha = document.getElementById("fecha");
-
-let bCalcula = document.getElementById("bCalcula").onclick=function(){
-
     let dateNow = new Date();
-    let datebirth = new Date(fecha.value);
-    let result = dateNow - datebirth/1000;
+    let myDate = new Date(0);
 
-    info.innerHTML="Llevas vivo "+(result) +" segundos";
 
-};
+    //info.innerHTML = myDate;
+
+    //info.innerHTML = "La hora en tu ciudad es " + dateNow.toUTCString() + " añadiendo un offset de " + dateNow.getTimezoneOffset();
+
+    //si mas de las 8 de la tarde que pongo colores de la web mas oscuros 
+        // let dateOscuro = new Date();
+        // let main = document.getElementById("main");
+
+        // if((dateOscuro.getHours()>=20)  && ( dateOscuro.getMonth()>=9 || dateOscuro.getMonth()<= 2) ){
+        //     main.style.backgroundColor= "black";
+        // }else{
+        //     main.style.backgroundColor="white";
+        // }
+
+        // let fecha = document.getElementById("fecha");
+
+        // let bCalcula = document.getElementById("bCalcula").onclick=function(){
+
+        //     let dateNow = new Date();
+        //     let datebirth = new Date(fecha.value);
+        //     let result = dateNow - datebirth/1000;
+
+        //     info.innerHTML="Llevas vivo "+(result) +" segundos";
+
+        // };
+
+
+/*NAVEGADORES*/
+//info.innerHTML= "Numero de nucleos: "+navigator.hardwareConcurrency;
+info.innerHTML= "Numero de memoria: "+navigator.devicesMemory;
+info.innerHTML= "Numero de nucleos: "+screen.orientation.angle;

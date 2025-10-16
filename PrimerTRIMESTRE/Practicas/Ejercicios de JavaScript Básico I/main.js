@@ -264,10 +264,37 @@ botonPum.onclick = function(){
 /**EJERCICIO 12 */
 //variables 
 let botonConteo = document.getElementById("conteo");
-let resulConteo= document.getElementById("Conteo");
+let rConteo= document.getElementById("Conteo");
 
 botonConteo.onclick = function(){
- 
+  rConteo.innerText = " ";
+  for (let i = 1; i <= 300; i++) {
+    const span = document.createElement("span");
+    span.innerText = i + " ";
+
+    // Estilo púrpura si es múltiplo de 4 y 9
+    if (i % 4 === 0 && i % 9 === 0) {
+      span.style.color = "purple";
+      span.style.fontSize = "22px";
+    }
+    // Estilo verde si es múltiplo de 4
+    else if (i % 4 === 0) {
+      span.style.color = "green";
+      span.style.fontSize = "20px";
+    }
+    // Estilo rojo si es múltiplo de 9
+    else if (i % 9 === 0) {
+      span.style.color = "red";
+      span.style.fontSize = "18px";
+    }
+
+    rConteo.appendChild(span);
+
+    // Salto de línea cada 10 números
+    if (i % 10 === 0) {
+      rConteo.appendChild(document.createElement("br"));
+    }
+  }
 }
 
 
