@@ -188,7 +188,7 @@ let myArray1 = new Array(1,true,"pepe",45.58,"maria",false);
 
     //si mas de las 8 de la tarde que pongo colores de la web mas oscuros 
         // let dateOscuro = new Date();
-        // let main = document.getElementById("main");
+         let main = document.getElementById("main");
 
         // if((dateOscuro.getHours()>=20)  && ( dateOscuro.getMonth()>=9 || dateOscuro.getMonth()<= 2) ){
         //     main.style.backgroundColor= "black";
@@ -211,5 +211,77 @@ let myArray1 = new Array(1,true,"pepe",45.58,"maria",false);
 
 /*NAVEGADORES*/
 //info.innerHTML= "Numero de nucleos: "+navigator.hardwareConcurrency;
-info.innerHTML= "Numero de memoria: "+navigator.devicesMemory;
-info.innerHTML= "Numero de nucleos: "+screen.orientation.angle;
+// info.innerHTML= "Numero de memoria: "+navigator.devicesMemory;
+// info.innerHTML= "Numero de nucleos: "+screen.orientation.angle;
+
+
+/*WINDOWS*/
+    // document.body.addEventListener("resize",()=>{
+    //     info.innerHTML = window.innerWidth +"-"+window.innerHeight;
+    // });
+
+
+
+    //Cambia el color del main cuando hayan paado 3 segundos 
+
+        // setTimeout(function() {
+        //     main.style.backgroundColor= "rgb(128, 13, 13)";
+        // }, 3000);
+
+    //ejecuta la funcion de arriba que cambie cada 5 segundos de color NO FUNCIONA BIEN MIRAR FINDE 
+
+        // let backgroundColorMain = "rgb(167,154,17)";
+        // let backgroundColorMain2 = "rgb(128, 13, 13)";
+        // //setInterval ejecuta cada 5 segundos
+        //  let intervalo =setInterval(function(){
+        //     if(main.style.backgroundColor== backgroundColorMain){
+        //         main.style.backgroundColor = backgroundColorMain2;
+        //     }else{
+        //          main.style.backgroundColor = backgroundColorMain;
+
+        //     }
+        // },2000)
+
+        // document.getElementById("paraIntervalo").onclick = function(){
+        //     clearInterval(intervalo);
+        // }
+
+         let wAux=undefined;
+
+        // document.getElementById("abrirVentana").onclick=function(){
+        //      wAux = window.open("./src/users.html","_blank_","width=300,height=400,left=400px,top=100px");
+        // }
+
+        // document.getElementById("moverto").onclick=function(){
+        //     if((wAux) && (wAux.close)){
+        //         wAux.moveTo(800,500);
+        //         wAux.focus();//matener foco
+        //     }
+        // }
+
+        
+
+        //     document.getElementById("moverby").onclick=function(){
+        //     if((wAux) && (wAux.close)){
+        //         wAux.moverby(200,200);
+        //         wAux.focus();//matener foco
+        //     }
+        // }
+
+
+
+         document.getElementById("resizeTO").onclick=function(){
+            if((wAux) && (wAux.close)){
+                wAux.resizeTo(800,500);
+                wAux.focus();//matener foco
+            }
+        }
+
+        
+
+            document.getElementById("moverby").onclick=function(){
+            if((wAux) && (wAux.close)){
+                wAux.resizeby(200,200);
+                wAux.focus();//matener foco
+            }
+        }

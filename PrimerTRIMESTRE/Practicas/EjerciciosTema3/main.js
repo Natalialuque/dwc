@@ -86,7 +86,24 @@ botonProfesor.onclick= function(){
 
 /**EJERCICIO 6 */
 //variables 
+let hora = document.getElementById("hora");
+let texto = document.getElementById("texto");
+let recordar = document.getElementById("recordar");
+
 //ejercicio 
+
+recordar.onclick=function(){
+  let mensaje = texto.value;
+  let tiempo = new Date(hora.value);
+
+  let fechaNow = new Date(); //fecha actual
+
+  tiempo =Math.abs( fechaNow -tiempo);
+
+  setTimeout(function(){
+    alert(mensaje);
+  },tiempo)
+}
 
 
 /**EJERCICIO 7 */
