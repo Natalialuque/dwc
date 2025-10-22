@@ -248,12 +248,12 @@ let myArray1 = new Array(1,true,"pepe",45.58,"maria",false);
 
          let wAux=undefined;
 
-        // document.getElementById("abrirVentana").onclick=function(){
-        //      wAux = window.open("./src/users.html","_blank_","width=300,height=400,left=400px,top=100px");
-        // }
+         document.getElementById("abrirVentana").onclick=function(){
+              wAux = window.open("./src/users.html","_blank_","width=300,height=400,left=400px,top=100px");
+         }
 
         // document.getElementById("moverto").onclick=function(){
-        //     if((wAux) && (wAux.close)){
+        //     if((wAux) && (!wAux.close)){
         //         wAux.moveTo(800,500);
         //         wAux.focus();//matener foco
         //     }
@@ -262,7 +262,7 @@ let myArray1 = new Array(1,true,"pepe",45.58,"maria",false);
         
 
         //     document.getElementById("moverby").onclick=function(){
-        //     if((wAux) && (wAux.close)){
+        //     if((wAux) && (!wAux.close)){
         //         wAux.moverby(200,200);
         //         wAux.focus();//matener foco
         //     }
@@ -270,18 +270,31 @@ let myArray1 = new Array(1,true,"pepe",45.58,"maria",false);
 
 
 
-         document.getElementById("resizeTO").onclick=function(){
-            if((wAux) && (wAux.close)){
-                wAux.resizeTo(800,500);
-                wAux.focus();//matener foco
-            }
-        }
+        //  document.getElementById("resizeTO").onclick=function(){
+        //     if((wAux) && (wAux.close)){
+        //         wAux.resizeTo(800,500);
+        //         wAux.focus();//matener foco
+        //     }
+        // }
 
         
 
-            document.getElementById("moverby").onclick=function(){
-            if((wAux) && (wAux.close)){
-                wAux.resizeby(200,200);
-                wAux.focus();//matener foco
+        //     document.getElementById("resizeBy").onclick=function(){
+        //     if((wAux) && (wAux.close)){
+        //         wAux.resizeBy(200,200);
+        //         wAux.focus();//matener foco
+        //     }
+        // }
+
+
+        ////
+        document.getElementById("aEnviarLogin").onclick = function(){
+            if(!wAux.closed){
+                wAux.document.getElementById("loginText").value = document.getElementById("login").value;
+
+                wAux.focus();
             }
         }
+
+
+      
