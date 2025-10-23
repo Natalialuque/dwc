@@ -248,53 +248,67 @@ let myArray1 = new Array(1,true,"pepe",45.58,"maria",false);
 
          let wAux=undefined;
 
-         document.getElementById("abrirVentana").onclick=function(){
-              wAux = window.open("./src/users.html","_blank_","width=300,height=400,left=400px,top=100px");
-         }
+//          document.getElementById("bAbrir").onclick = function (){
+//               wAux = window.open("./src/users.html","_blank_","width=300,height=400,left=400px,top=100px");
+//          }
 
-        // document.getElementById("moverto").onclick=function(){
-        //     if((wAux) && (!wAux.close)){
-        //         wAux.moveTo(800,500);
-        //         wAux.focus();//matener foco
-        //     }
-        // }
+//        document.getElementById("bMoverTo").onclick = function () {
+//     if ((wAux) && (!wAux.closed)) {
+//         wAux.moveTo(200, 200);
+//         wAux.focus();
+//     }
+// }
 
-        
+// document.getElementById("bMoverBy").onclick = function () {
+//     if ((wAux) && (!wAux.closed)) {
+//         wAux.moveBy(200, 200);
+//         wAux.focus();
+//     }
+// }
 
-        //     document.getElementById("moverby").onclick=function(){
-        //     if((wAux) && (!wAux.close)){
-        //         wAux.moverby(200,200);
-        //         wAux.focus();//matener foco
-        //     }
-        // }
+// document.getElementById("bResizeTo").onclick = function () {
+//     if ((wAux) && (!wAux.closed)) {
+//         wAux.resizeTo(400, 400);
+//         wAux.focus();
+//     }
+// }
+
+// document.getElementById("bResizeBy").onclick = function () {
+//     if ((wAux) && (!wAux.closed)) {
+//         wAux.resizeBy(400, 400);
+//         wAux.focus();
+//     }
+// }
+
+// document.getElementById("bPrint").onclick = function () {
+//     if ((wAux) && (!wAux.closed)) {
+//         wAux.print();
+//         wAux.focus();
+//     }
+// }
+
+// document.getElementById("aEnviarLogin").onclick = function () {
+//     if (!wAux.closed) {
+
+//         wAux.document.getElementById("loginText").value = document.getElementById("login").value;
+
+//         wAux.focus();
+//     }
+//}
+
+//cockies (mas importante 2º)
+//document.cookie="name=pepe; max-age=2000000";
+
+//numeros de formularios que hay 
+//alert(document.forms.length);
+
+//
+let opt = document.createElement("option");
+opt.innerHTML = "Alemania"
+document.getElementById("lista").appendChild(opt);
+
+document.forms[0].style.backgroundColor = "pink"
+document.forms[1].style.backgroundColor = "black"
 
 
-
-        //  document.getElementById("resizeTO").onclick=function(){
-        //     if((wAux) && (wAux.close)){
-        //         wAux.resizeTo(800,500);
-        //         wAux.focus();//matener foco
-        //     }
-        // }
-
-        
-
-        //     document.getElementById("resizeBy").onclick=function(){
-        //     if((wAux) && (wAux.close)){
-        //         wAux.resizeBy(200,200);
-        //         wAux.focus();//matener foco
-        //     }
-        // }
-
-
-        ////
-        document.getElementById("aEnviarLogin").onclick = function(){
-            if(!wAux.closed){
-                wAux.document.getElementById("loginText").value = document.getElementById("login").value;
-
-                wAux.focus();
-            }
-        }
-
-
-      
+info.innerHTML="URL:"+document.location+"Referencia datos:"+document.referrer;

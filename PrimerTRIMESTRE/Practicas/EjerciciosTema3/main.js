@@ -64,13 +64,46 @@ botonProfesor.onclick= function(){
 
 
 /**EJERCICIO 2 */
+//POR PARTES 
 //variables 
+let longitud = document.getElementById("longitud");
+let altura = document.getElementById("altura");
+let calcLongitud = document.getElementById("calcLongitud");
+let resul1 = document.getElementById("resul1");
+
 //ejercicio 
+calcLongitud.onclick=function(){
+  resul1.innerHTML=Math.sqrt((longitud.value **2 )+(altura.value**2));
+}
+
+//variables 
+let x1=document.getElementById("x1");
+let y1=document.getElementById("y1"); 
+let x2=document.getElementById("x2");
+let y2=document.getElementById("y2");
+let calcpendiente= document.getElementById("calcpendiente");
+let resul2=document.getElementById("resul2"); 
+
+
+
 
 
 /**EJERCICIO 3 */
 //variables 
+let pi1= document.getElementById("pi1");
+let pi2= document.getElementById("pi2");
+
+//constante 
+const PI = Math.PI;
+
 //ejercicio 
+
+   // Método 1: toFixed()
+  pi1.innerHTML = PI.toFixed(4); // Devuelve "3.1416"
+
+  // Método 2: Math.round con multiplicación
+  pi2.innerHTML = Math.round(PI * 10000) / 10000; // Devuelve 3.1416
+
 
 
 /**EJERCICIO 4 */
