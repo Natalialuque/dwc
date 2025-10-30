@@ -50,23 +50,14 @@
                 <label>Metros ascendidos:</label>
                 <input id="ascendidos" type="number">
                 <label>Metros recrridos:</label>
-                <input id="recrridos" type="number">
-                <button id="calcPendiente">calcula</button>
+                <input id="recorridos" type="number">
+                <button id="calcPendiente2">calcula</button>
                 <p id="resul13"></p>
 
 
-
-
-
-
-
-
-
-
-
-
-
         </div>
+
+
         <h2>EJERCICIO 3</h2> 
             <div>
                 <h4>Valor de Pi con unicamente dos decimales </h4>
@@ -75,11 +66,28 @@
                     <li><p id="pi2"></p></li>
                 </ul>
             </div>
+
+
         <h2>EJERCICIO 4</h2> 
+        <div>
+           <h4>Numeros de dias vivos</h4>
+           <label>introduce tu fecha de nacimiento</label>
+            <input type="date" id="fechaNacimiento" name="fechaNacimiento">
+             <button id="calculaDias">Calcular</button>
+             <div id="resultadoDias"></div>
+        </div>
+
+
 
         <h2>EJERCICIO 5</h2> 
        
-       
+       <div>
+        <h4>Calcular edad</h4>
+            <label for="fechaNacimiento">Introduce tu fecha de nacimiento:</label>
+             <input type="date" id="fechaNacimiento2">
+             <button id="calcularEdad">Calcular edad exacta</button>
+             <div id="resultadoEdad"></div>
+       </div>
        
        
         <h2>EJERCICIO 6</h2> 
@@ -88,13 +96,46 @@
             <br>
             <textarea name="" id="texto" rows="10" cols="40"></textarea>
             <br>
-            <label for="hora">Recordar a:</label>
+            <label for="hora">Fecha:</label>
             <input type="datetime-local" name="hora" id="hora">
             <br>
-            <button id="recordar">recordar</button>
+            <button id="recordar">Agregar</button>
+            <br>
+            <label>Lista eventos</label>
+            <p id="listaEventos"></p>
         </div>
+
         <h2>EJERCICIO 7</h2> 
+        <div>
+            <label for="texto">Escribe un texto con '-'</label>
+            <br>
+            <textarea name="" id="textoguion" rows="5" cols="40"></textarea>
+            <br>
+            <button id="cantidad">Calcula</button>
+            <br>
+            <label >Cantidad de - y posiciones:</label>
+            <p id="cantidadPosicion"></p>
+        </div>
+      
         <h2>EJERCICIO 8</h2> 
+        <div>
+            <h2>Array dinámico</h2>
+
+            <input type="text" id="valor" placeholder="Valor">
+            <input type="number" id="posicion" placeholder="Posición">
+            <br>
+
+            <button onclick="insertarFinal()">Insertar al final</button>
+            <button onclick="insertarInicio()">Insertar al principio</button>
+            <button onclick="borrarPrimero()">Borrar primero</button>
+            <button onclick="borrarUltimo()">Borrar último</button>
+            <button onclick="insertarEnPosicion()">Insertar en posición</button>
+            <button onclick="eliminarEnPosicion()">Eliminar en posición</button>
+            <button onclick="ordenarAsc()">Ordenar ascendente</button>
+            <button onclick="ordenarDesc()">Ordenar descendente</button>
+
+            <p id="resultado">[ ]</p>
+        </div>
 
     <h1>Ejercicios sobre objetos: Navigator, Screen, Window,History, Document, Location. </h1>
 

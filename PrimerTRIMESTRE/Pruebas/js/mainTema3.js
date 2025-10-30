@@ -303,12 +303,31 @@ let myArray1 = new Array(1,true,"pepe",45.58,"maria",false);
 //alert(document.forms.length);
 
 //
-let opt = document.createElement("option");
-opt.innerHTML = "Alemania"
-document.getElementById("lista").appendChild(opt);
+// let opt = document.createElement("option");
+// opt.innerHTML = "Alemania"
+// document.getElementById("lista").appendChild(opt);
 
-document.forms[0].style.backgroundColor = "pink"
-document.forms[1].style.backgroundColor = "black"
+// document.forms[0].style.backgroundColor = "pink"
+// document.forms[1].style.backgroundColor = "black"
 
 
-info.innerHTML="URL:"+document.location+"Referencia datos:"+document.referrer;
+// info.innerHTML="URL:"+document.location+"Referencia datos:"+document.referrer;
+
+
+//HISTORY
+// info.innerHTML="Numero de paginas visitadas:"+history.length;
+// info.innerHTML +="<br>Pagina actual en el historial:"+history.state;
+// info.innerHTML +="<br>Url actual:"+document.location;
+// info.innerHTML +="<br>Despues de ir una pagina atras Url actual:"+document.location;
+
+
+info.innerHTML="Numero de webs visitadas:"+history;
+
+document.getElementById("forward").onclick=function(){
+    history.forward();
+}
+
+document.getElementById("back").onclick=function(){
+    history.back();
+}
+
