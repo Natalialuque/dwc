@@ -321,13 +321,76 @@ let myArray1 = new Array(1,true,"pepe",45.58,"maria",false);
 // info.innerHTML +="<br>Despues de ir una pagina atras Url actual:"+document.location;
 
 
-info.innerHTML="Numero de webs visitadas:"+history;
+// info.innerHTML="Numero de webs visitadas:"+history;
 
-document.getElementById("forward").onclick=function(){
-    history.forward();
-}
+// document.getElementById("forward").onclick=function(){
+//     history.forward();
+// }
 
-document.getElementById("back").onclick=function(){
-    history.back();
-}
+// document.getElementById("back").onclick=function(){
+//     history.back();
+// }
 
+
+
+///EXPRESIONES REGULARES 
+let text = document.getElementById("texto");
+
+// let er1 = new RegExp("[0-9]{1,2}", "i");
+// let er2 = /\d{1,2}/g;
+
+// let tmpIndex = er2.lastIndex;
+
+// while (er2.test(text.innerText)) {
+//     console.info("LastIndex después de test: " + er2.lastIndex);
+    
+//     er2.lastIndex = tmpIndex;
+
+//     let result = er2.exec(text.innerText);
+//     console.info("LastIndex después de exec: " + er2.lastIndex);
+
+//     console.log(result);
+//     info.innerHTML += "Encontrado " + result["0"] + " en la posición " + result.index + "<br>";
+    
+//     tmpIndex = er2.lastIndex;
+// }
+
+// let er1 = new RegExp("[0-9]{1,2}", "i");
+// let er2 = /\d{1,2}/;
+
+// if(text.match(er2)) 
+//     info.innerHTML = "Encontrado";
+// else 
+//     info.innerHTML = "No Encontrado";
+
+
+// let er1 = new RegExp("\d{1,2}", "g");
+// let er2 = /\d{1,2}/g;
+
+// if (text.innerText.match(er2)) 
+//     text.innerText = text.innerText.replaceAll(er2,"<strong style='color:red'><u>REF</u></strong>");
+
+
+
+//PASWORD 
+    //Login--> EMPIECE POR MAYUSCULA(al menos una), entre D-R
+    //Contraseña -->CONTENGA al menos 2 SIMBOLOS (-,_,$,(,))
+
+    let login = document.getElementById("login");
+    let password = document.getElementById("password");
+    
+    document.getElementById("bLogin").onclick = function(){
+        let erLogin = /^[D-R][a-zA-Z0-9]+$/        
+        //empieza entre D-R y le sigue cualer caracter o nuemero (minimo dos caracteres)
+
+        let erContrasena = /^(?=(?:.*[-_$()]){2,})[a-zA-Z0-9\-_$()]+$/;
+
+        if(!erLogin.test(login.value)){
+            alert("Login incorrecto, debe tener al menos una mayuscula y empezar entre D-R");
+        }
+
+        if(!erContrasena.test(password.value)){
+            alert("Contraseña incorrecta, debe tener al menos dos simbolos (-,_,$,(,))");
+        }
+
+    }
