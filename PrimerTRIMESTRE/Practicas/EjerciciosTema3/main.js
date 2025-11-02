@@ -5,6 +5,7 @@ let botonProfesor = document.getElementById("verProfesor");
 let resultadoEstudiante = document.getElementById("resultadoEstudiante");
 let resultadoProfesor = document.getElementById("resultadoProfesor");
 
+//HOLA
 //ejercicio 
 // Clase base Persona
 class Persona {
