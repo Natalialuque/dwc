@@ -308,34 +308,160 @@ let array = [];
 
 /**EJERCICIO 9 */
 //variables 
+respuesta = document.getElementById("resRes");
+respuesta.innerText = "Ancho: "+window.innerWidth+", Alto:"+window.innerHeight;
 //ejercicio 
+window.addEventListener("resize",()=>{
+  respuesta.innerText = "Ancho: "+window.innerWidth+", Alto:"+window.innerHeight;
 
+  if(parseInt(window.innerWidth)<768)
+    respuesta.innerText+=" Movil";
+  else if(parseInt(window.innerWidth)<1024)
+    respuesta.innerText+=", tablet";
+  else
+    respuesta.innerText+=", Desktop";
+});
 
 /**EJERCICIO 10 */
 //variables 
 //ejercicio 
+document.addEventListener("DOMContentLoaded", () => {
+  const boton = document.getElementById("abrir-posicionada");
+
+  boton.addEventListener("click", () => {
+    const anchoPantalla = window.innerWidth;
+    const altoPantalla = window.innerHeight;
+
+    const posicionX = anchoPantalla - 40;
+    const posicionY = altoPantalla - 20;
+
+    const nuevaVentana = window.open(
+      '',
+      '',
+      `width=300,height=200,left=${posicionX},top=${posicionY}`
+    );
+
+    if (nuevaVentana) {
+      nuevaVentana.document.write('<h2 style="font-family:Arial;">Ventana posicionada</h2>');
+    } else {
+      alert(" El navegador ha bloqueado la apertura de la ventana. Activa los pop-ups.");
+    }
+  });
+});
+
 
 
 /**EJERCICIO 11 */
 //variables 
 //ejercicio 
+document.addEventListener("DOMContentLoaded", () => {
+  const boton = document.getElementById("abrir-ventana");
+
+  boton.addEventListener("click", () => {
+    const nuevaVentana = window.open('', '', 'width=300,height=300');
+    if (nuevaVentana) {
+      nuevaVentana.resizeTo(600, 500);
+    } else {
+      alert("El navegador ha bloqueado la apertura de la ventana. Activa los pop-ups.");
+    }
+  });
+});
+
 
 
 /**EJERCICIO 12 */
 //variables 
 //ejercicio 
+// document.addEventListener("DOMContentLoaded", () => {
+//   const iframe = document.getElementById("visor");
+//   const urlActual = document.getElementById("url-actual");
+//   const btnAtras = document.getElementById("btn-atras");
+//   const btnAdelante = document.getElementById("btn-adelante");
+
+//   const historial = ["https://www.example.com"];
+//   let posicion = 0;
+
+//   function actualizarIframe() {
+//     iframe.src = historial[posicion];
+//     urlActual.innerText = "URL actual: " + historial[posicion];
+//   }
+
+//   btnAtras.addEventListener("click", () => {
+//     if (posicion > 0) {
+//       posicion--;
+//       actualizarIframe();
+//     }
+//   });
+
+//   btnAdelante.addEventListener("click", () => {
+//     if (posicion < historial.length - 1) {
+//       posicion++;
+//       actualizarIframe();
+//     }
+//   });
+
+//   // Ejemplo: añadir nuevas páginas al historial cada 5 segundos
+//   // Puedes quitar esto y usar tus propios botones para navegar
+//   setInterval(() => {
+//     const nuevasUrls = [
+//       "https://www.wikipedia.org",
+//       "https://www.mozilla.org",
+//       "https://www.w3schools.com"
+//     ];
+//     if (posicion === historial.length - 1 && historial.length < 4) {
+//       historial.push(nuevasUrls[historial.length - 1]);
+//       posicion++;
+//       actualizarIframe();
+//     }
+//   }, 5000);
+
+//   actualizarIframe();
+// });
+document.getElementById("atras").onclick = () => {
+    history.back();
+}
+
+document.getElementById("adelante").onclick = () => {
+    history.forward();
+}
 
 
 /**EJERCICIO 13 */
 //variables 
 //ejercicio 
+document.getElementById("enviarArea1").onclick = () => {
+if ((aux)&&(!aux.closed)) {
+    aux.document.getElementById("loginText").value = document.getElementById("texto").value;
+    aux.focus();
+  } else {
 
+  }
+}
 
 
 /**EJERCICIO 14 */
 //variables 
 //ejercicio 
+let er1 = new RegExp("l","ig");
+document.getElementById("compExpr").onclick = () => {
+    let res = document.getElementById("resExp");
+    let texto = document.getElementById("probarExp").value;
 
+    // que ha encontrado y cuantas veces lo ha encontrado en un array
+    let coincidencias = texto.match(er1);
+
+    // true si existe
+    let existe = er1.test(texto);
+
+    // reemplaza el texto encontrado a rojo y negrita
+    let resaltado = texto.replace(er1, match => `<strong style='color:red'><u>${match}</u></strong>`);
+
+    res.innerHTML = `
+        ${existe ? "Existe la letra L" : "No existe la letra L"}<br>
+        Número de coincidencias: ${coincidencias ? coincidencias.length : 0}<br>
+        Texto resaltado: ${resaltado}
+    `;
+}
 
 /**EJERCICIO 15 */
 //variables 
