@@ -5,6 +5,7 @@ let botonProfesor = document.getElementById("verProfesor");
 let resultadoEstudiante = document.getElementById("resultadoEstudiante");
 let resultadoProfesor = document.getElementById("resultadoProfesor");
 
+//HOLA
 //ejercicio 
 // Clase base Persona
 class Persona {
@@ -338,21 +339,76 @@ let array = [];
 
 /**EJERCICIO 15 */
 //variables 
+let fecha = document.getElementById("fecha");
+let resultadoFecha = document.getElementById("resultadoFecha");
+let validaFecha = document.getElementById("validaFecha");
+
 //ejercicio 
+validaFecha.onclick=function(){
+    const expre = /\b\d{1,2}\/\d{1,2}\/\d{4}\b/;
+
+    if(fecha.value.match (expre)){
+        resultadoFecha.innerHTML="La fecha es correcta";
+    }else{
+        resultadoFecha.innerHTML="La fecha no es correcta";
+    }
+
+}
+
 
 
 /**EJERCICIO 16 */
 //variables 
+let email = document.getElementById("email");
+let resultadoemail = document.getElementById("resultadoemail");
+let validaemail = document.getElementById("validaemail");
 //ejercicio 
+validaemail.onclick=function(){
+    const expre = /^[a-zA-Z0-9.-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,3}$/; 
 
+    if(email.value.match (expre)){
+        resultadoemail.innerHTML="El email es correcto";
+    }else{
+        resultadoemail.innerHTML="El email no es correcto";
+    }
 
+}
 
 /**EJERCICIO 17 */
 //variables 
+let nombre = document.getElementById("nombre");
+let apellido = document.getElementById("apellido");
+let resultadoInvertir = document.getElementById("resultadoInvertir");
+let inivierte = document.getElementById("inivierte");
+
 //ejercicio 
+// las comillas inversas (``)Son las únicas que permiten interpolación de variables y múltiples líneas fácilmente.
 
+inivierte.onclick = function () {
+  // Obtener los valores de los campos
+  const entrada = `${nombre.value.trim()} ${apellido.value.trim()}`;
 
+  // Expresión regular para capturar nombre y apellido
+  const expre = /^(\w+)\s+(\w+)$/;
+
+  const match = entrada.match(expre);
+
+  if (match) {
+    const invertido = `${match[2]}, ${match[1]}`;
+    resultadoInvertir.textContent = invertido;
+  } else {
+    resultadoInvertir.textContent = "Formato no válido. Usa solo letras sin símbolos.";
+  }
+};
 
 /**EJERCICIO 18 */
 //variables 
 //ejercicio 
+document.getElementById("limpiar").onclick = function () {
+  const entrada = document.getElementById("htmlInput").value;
+
+  // Expresión regular para eliminar <script>...</script> y su contenido
+  const limpio = entrada.replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, '');
+
+  document.getElementById("resultadohtml").textContent = limpio;
+};
