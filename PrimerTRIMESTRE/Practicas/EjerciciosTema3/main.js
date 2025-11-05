@@ -140,7 +140,9 @@ let resultadoDias=document.getElementById("resultadoDias");
 //ejercicio 
 calculaDias.onclick=function(){
       const nacimiento = new Date(fechaNaciiento.value);
-      const hoy = new Date();
+      const hoy = new Date(); //
+
+      console.log("hoy:"+hoy);
 
       // Calcular diferencia en milisegundos
       const diferenciaMs = hoy - nacimiento;
