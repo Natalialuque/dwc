@@ -1,7 +1,7 @@
-const { createElement } = require("react");
+//const { createElement, createContext } = require("react");
 
-let info = document.getElementById("info");
-let parrafos = document.getElementsByName("saludo");
+//let info = document.getElementById("info");
+//let parrafos = document.getElementsByName("saludo");
 //let parrafos = document.getElementById("main").getElementsByTagName("");
 
 //Da error por que no se puede meter dos id igaules pa diferentes cosas
@@ -11,7 +11,7 @@ let parrafos = document.getElementsByName("saludo");
 // console.log(parrafos);
 // parrafos[0].style.backgroundColor = "pink"
 
-const opciones = document.getElementsByName("opciones");
+//const opciones = document.getElementsByName("opciones");
 // console.log(opciones[0].checked);
 
 
@@ -41,42 +41,94 @@ const opciones = document.getElementsByName("opciones");
 // }
 
 ////////////////////////////////////////////////////
-// let pie = document.createElement("footer");
-// let pPie = document.createElement("p");
-// let pPieText = document.createTextNode("Contacto: 654 654 654");
+ let pie = document.createElement("footer");
+ let pPie = document.createElement("p");
+ let pPieText = document.createTextNode("Contacto: 654 654 654");
 
-// pPie.appendChild(pPieText);
+ pPie.appendChild(pPieText);
 
-// pie.appendChild(pPie);
-
-// document.body.appendChild(pie);
+ pie.appendChild(pPie);
 
 
-// document.getElementById("check").onclick = () => {
-//     let op = document.getElementById("opcionLista").value;
-//     let lista = null;
+ // document.body.appendChild(pie);
+document.body.innerHTML += "<label>Has ganado un coche. Pincha en este enlace: </label><a href='estafa.com'>Premio!!</a>"
+
+
+document.getElementById("opcionLista").setAttribute("placeholder", "Inserta opción de la lista");
+
+document.getElementById("opcionLista").removeAttribute("placeholder");
+
+ document.getElementById("check").onclick = () => {
+    let op = document.getElementById("opcionLista").value;
+    //lista = document.getElementsByTagName("ul")[0].innerHTML += "<li style='color:red'>"+ op +"</li>";
+
+    let lista = null;
     
-//     if ((document.getElementsByTagName("ul").length > 0) && (op != "")) {
-//         lista = document.getElementsByTagName("ul")[0];
+     if ((document.getElementsByTagName("ul").length > 0) && (op != "")) {
+         lista = document.getElementsByTagName("ul")[0];
+//  //  let opElement = document.createElement("li");
+//         //  let opElementText = document.createTextNode(op);
 
-//         let opElement = document.createElement("li");
-//         let opElementText = document.createTextNode(op);
+//         //  opElement.appendChild(opElementText);
+//         //  lista.appendChild(opElement);
+         lista.appendChild(createNode("li", op));
+     }
 
-//         opElement.appendChild(opElementText);
-//         lista.appendChild(opElement);
-//     }
+    document.getElementById("opcionLista").value = "";
+}
 
-//     document.getElementById("opcionLista").value = "";
-// }
+document.getElementById("bDelete").onclick = () => {
+     let lista = document.getElementById("lista");
+    let lastChild;
 
-let pie = document.createElement("footer");
-/*************************************************** */
-function createNode(tipoNodo,tipoTexto){
-    let nodo = createElement(tipoNodo);
-    let nodoText = createElement(tipoTexto);
-    nodo.appendChild( nodoText);
-
-    return nodo;
-    
+    if (lista.getElementsByTagName("li").length > 0) {
+       lastChild = lista.getElementsByTagName("li")[lista.getElementsByTagName("li").length-1];
+       let nodoBorrado = lastChild.parentNode.removeChild(lastChild);
+       console.log(nodoBorrado);
 
 }
+}
+
+/*************************************************** */
+function createNode(tipoNodo, tipoTexto) {
+    let nodo;
+    let nodoText;
+
+    switch(arguments.length) {
+        case 0: 
+            throw "Se necesita al menos el tipo de elemento a crear.";
+            break;
+        case 1:
+            nodo = document.createElement(tipoNodo);
+            nodo.onclick = changeColor;
+            nodo.id = "nuevoNodo"
+            break;
+        case 2:
+            nodo = document.createElement(tipoNodo);
+            nodo.onclick = changeColor;
+            nodoText = document.createTextNode(tipoTexto);
+            nodo.appendChild(nodoText);
+            break;
+    }
+
+    return nodo;
+}
+
+function changeColor() {
+    this.style.color = "red";
+}
+
+/********************************* 
+*/
+
+document.getElementById("verPassword").onclick = () => {
+    if (document.getElementById("verPassword").type == "password") {
+        document.getElementById("verPassword").type = "text"
+        this.innerHTML = "Ocultar password";
+    }
+    else {
+        document.getElementById("verPassword").type = "password"
+        this.innerHTML = "Ver password";
+    }
+}
+
