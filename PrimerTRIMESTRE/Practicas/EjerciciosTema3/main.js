@@ -327,48 +327,24 @@ window.addEventListener("resize",()=>{
 /**EJERCICIO 10 */
 //variables 
 //ejercicio 
-document.addEventListener("DOMContentLoaded", () => {
-  const boton = document.getElementById("abrir-posicionada");
-
-  boton.addEventListener("click", () => {
-    const anchoPantalla = window.innerWidth;
-    const altoPantalla = window.innerHeight;
-
-    const posicionX = anchoPantalla - 40;
-    const posicionY = altoPantalla - 20;
-
-    const nuevaVentana = window.open(
-      '',
-      '',
-      `width=300,height=200,left=${posicionX},top=${posicionY}`
-    );
-
-    if (nuevaVentana) {
-      nuevaVentana.document.write('<h2 style="font-family:Arial;">Ventana posicionada</h2>');
-    } else {
-      alert(" El navegador ha bloqueado la apertura de la ventana. Activa los pop-ups.");
-    }
-  });
-});
+let ancho = (window.innerWidth-40);
+let alto = (window.innerHeight-20);
+let aux= undefined;
+document.getElementById("abrirVentana").onclick = function() {
+    aux = window.open(
+      "../Pruebas/src/usuers.html",
+     "NuevaVenta",
+     "Width="+ancho+",height="+alto);
+}
 
 
 
 /**EJERCICIO 11 */
 //variables 
 //ejercicio 
-document.addEventListener("DOMContentLoaded", () => {
-  const boton = document.getElementById("abrir-ventana");
-
-  boton.addEventListener("click", () => {
-    const nuevaVentana = window.open('', '', 'width=300,height=300');
-    if (nuevaVentana) {
-      nuevaVentana.resizeTo(600, 500);
-    } else {
-      alert("El navegador ha bloqueado la apertura de la ventana. Activa los pop-ups.");
-    }
-  });
-});
-
+document.getElementById("redimensiona").onclick = function ()  {
+    aux.resizeTo(600,500);
+}
 
 
 /**EJERCICIO 12 */
@@ -482,8 +458,6 @@ validaFecha.onclick=function(){
     }
 
 }
-
-
 
 /**EJERCICIO 16 */
 //variables 
