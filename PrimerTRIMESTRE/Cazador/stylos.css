@@ -1,0 +1,73 @@
+*{
+    background-color: rgb(189, 223, 211);
+}
+
+header{
+    text-align: center;
+}
+
+header h1{
+    color: rgb(255, 255, 255);
+    background-color:rgb(112, 134, 127);
+    padding: 5px;
+    border-radius: 8px;
+    text-align: center;
+    letter-spacing: 20px; /* Ajusta el valor según lo que necesites */
+}
+
+
+.flotanteCabecera1{
+    float: left;
+    color: white;
+    background-color: transparent;
+  padding: 5px;
+    border-radius: 8px;
+}
+
+#fallosPermitidos{
+    background-color: rgb(112, 134, 127); /* color personalizado */
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.flotanteCabecera2{
+    float: right;
+    color: white;
+    background-color:transparent; 
+    padding: 5px;
+    border-radius: 8px;
+}
+
+#verPalabraOculta {
+    background-color: rgb(112, 134, 127); /* color personalizado */
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+#mostrarPalabra{
+    background-color: rgb(112, 134, 127); /* color personalizado */
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+#contadorFallos{
+     background-color: rgb(112, 134, 127); /* color personalizado */
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
