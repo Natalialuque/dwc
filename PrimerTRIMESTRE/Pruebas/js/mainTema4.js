@@ -45,49 +45,49 @@
  let pPie = document.createElement("p");
  let pPieText = document.createTextNode("Contacto: 654 654 654");
 
- pPie.appendChild(pPieText);
+//  pPie.appendChild(pPieText);
 
- pie.appendChild(pPie);
+//  pie.appendChild(pPie);
 
 
  // document.body.appendChild(pie);
-document.body.innerHTML += "<label>Has ganado un coche. Pincha en este enlace: </label><a href='estafa.com'>Premio!!</a>"
+// document.body.innerHTML += "<label>Has ganado un coche. Pincha en este enlace: </label><a href='estafa.com'>Premio!!</a>"
 
 
-document.getElementById("opcionLista").setAttribute("placeholder", "Inserta opción de la lista");
+// document.getElementById("opcionLista").setAttribute("placeholder", "Inserta opción de la lista");
 
-document.getElementById("opcionLista").removeAttribute("placeholder");
+// document.getElementById("opcionLista").removeAttribute("placeholder");
 
- document.getElementById("check").onclick = () => {
-    let op = document.getElementById("opcionLista").value;
-    //lista = document.getElementsByTagName("ul")[0].innerHTML += "<li style='color:red'>"+ op +"</li>";
+//  document.getElementById("check").onclick = () => {
+//     let op = document.getElementById("opcionLista").value;
+//     //lista = document.getElementsByTagName("ul")[0].innerHTML += "<li style='color:red'>"+ op +"</li>";
 
-    let lista = null;
+//     let lista = null;
     
-     if ((document.getElementsByTagName("ul").length > 0) && (op != "")) {
-         lista = document.getElementsByTagName("ul")[0];
-//  //  let opElement = document.createElement("li");
-//         //  let opElementText = document.createTextNode(op);
+//      if ((document.getElementsByTagName("ul").length > 0) && (op != "")) {
+//          lista = document.getElementsByTagName("ul")[0];
+// //  //  let opElement = document.createElement("li");
+// //         //  let opElementText = document.createTextNode(op);
 
-//         //  opElement.appendChild(opElementText);
-//         //  lista.appendChild(opElement);
-         lista.appendChild(createNode("li", op));
-     }
+// //         //  opElement.appendChild(opElementText);
+// //         //  lista.appendChild(opElement);
+//          lista.appendChild(createNode("li", op));
+//      }
 
-    document.getElementById("opcionLista").value = "";
-}
+//     document.getElementById("opcionLista").value = "";
+// }
 
-document.getElementById("bDelete").onclick = () => {
-     let lista = document.getElementById("lista");
-    let lastChild;
+// document.getElementById("bDelete").onclick = () => {
+//      let lista = document.getElementById("lista");
+//     let lastChild;
 
-    if (lista.getElementsByTagName("li").length > 0) {
-       lastChild = lista.getElementsByTagName("li")[lista.getElementsByTagName("li").length-1];
-       let nodoBorrado = lastChild.parentNode.removeChild(lastChild);
-       console.log(nodoBorrado);
+//     if (lista.getElementsByTagName("li").length > 0) {
+//        lastChild = lista.getElementsByTagName("li")[lista.getElementsByTagName("li").length-1];
+//        let nodoBorrado = lastChild.parentNode.removeChild(lastChild);
+//        console.log(nodoBorrado);
 
-}
-}
+// }
+// }
 
 /*************************************************** */
 function createNode(tipoNodo, tipoTexto) {
@@ -114,21 +114,48 @@ function createNode(tipoNodo, tipoTexto) {
     return nodo;
 }
 
-function changeColor() {
-    this.style.color = "red";
-}
+// function changeColor() {
+//     this.style.color = "red";
+// }
 
 /********************************* 
 */
 
-document.getElementById("verPassword").onclick = () => {
-    if (document.getElementById("verPassword").type == "password") {
-        document.getElementById("verPassword").type = "text"
-        this.innerHTML = "Ocultar password";
-    }
-    else {
-        document.getElementById("verPassword").type = "password"
-        this.innerHTML = "Ver password";
-    }
-}
+// document.getElementById("verPassword").onclick = () => {
+//     if (document.getElementById("verPassword").type == "password") {
+//         document.getElementById("verPassword").type = "text"
+//         this.innerHTML = "Ocultar password";
+//     }
+//     else {
+//         document.getElementById("verPassword").type = "password"
+//         this.innerHTML = "Ver password";
+//     }
+// }
 
+/*** ************************************************/
+// for (let elem of document.querySelectorAll("#lista li")) {
+//     elem.style.color = "blue";
+// }
+
+// let primerosLI = document.querySelectorAll("li:first-child");
+// for (elem of primerosLI)
+//     console.log(elem.style.backgroundColor);
+
+// let primerLI = document.querySelector("li:first-child");
+// let cssPrimerLI = window.getComputedStyle(primerLI);
+// cssPrimerLI.backgroundColor = "red";
+
+/******************************************************** */
+
+///ESTO NO ENTRA
+
+for (let sec of document.getElementsByTagName("section"))
+    sec.onclick = changeColorComputed;
+
+function changeColorComputed () {
+
+    if (this.className == "rojo")
+        this.className = "azul";
+    else 
+        this.className = "rojo";
+}
