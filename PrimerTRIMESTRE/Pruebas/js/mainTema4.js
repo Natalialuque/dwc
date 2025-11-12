@@ -147,15 +147,27 @@ function createNode(tipoNodo, tipoTexto) {
 
 /******************************************************** */
 
-///ESTO NO ENTRA
+///
 
-for (let sec of document.getElementsByTagName("section"))
-    sec.onclick = changeColorComputed;
+// for (let sec of document.getElementsByTagName("section"))
+//     sec.onclick = changeColorComputed;
 
-function changeColorComputed () {
+// function changeColorComputed () {
 
-    if (this.className == "rojo")
-        this.className = "azul";
-    else 
-        this.className = "rojo";
+//     if (this.className == "rojo")
+//         this.className = "azul";
+//     else 
+//         this.className = "rojo";
+// }
+
+//amplio texto, cambio color de fondo, caambio color de letras 
+
+for (let sec of document.getElementsByTagName("p")) {
+    sec.onmouseover = function () {
+        this.className = "ampliarcontraste";
+    };
+
+    sec.onmouseout = function () {
+        this.className = "reducircontraste";
+    };
 }

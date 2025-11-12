@@ -65,12 +65,45 @@ a {
 }
 
 .azul {
-    background-color: rgb(33, 33, 212);
+    background-color: rgb(145, 145, 248);
 }
 
 .rojo {
-    background-color: rgb(212, 33, 33);
+    background-color: rgb(211, 129, 193);
 }
+
+.ampliarcontraste{
+    visibility: visible;
+    font-size: 2rem;
+    background-color: rgb(164, 164, 221);
+    font-weight: bold;
+    color: black;
+}
+
+label{
+    background-color:  rgb(164, 164, 221);
+}
+
+p{
+    visibility: hidden;
+}
+p:hover {
+  visibility: visible; /* visible al pasar el ratón */
+  font-size: 2rem;
+  background-color: rgb(164, 164, 221);
+  font-weight: bold;
+  color: black;
+  transition: all 0.3s ease; /* animación suave */
+}
+
+.reducircontraste{
+    visibility: hidden;
+    font-size: 2rem;
+    background-color: rgb(255, 255, 255);
+    font-weight: inherit;
+    color: black;
+}
+
 
 footer {
     height: 10%;
