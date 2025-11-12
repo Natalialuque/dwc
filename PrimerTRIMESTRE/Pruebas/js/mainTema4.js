@@ -171,3 +171,5 @@ for (let sec of document.getElementsByTagName("p")) {
         this.className = "reducircontraste";
     };
 }
+
+//el texto no se ve, pero cuando me coloco encima si 

@@ -87,14 +87,7 @@ label{
 p{
     visibility: hidden;
 }
-p:hover {
-  visibility: visible; /* visible al pasar el ratón */
-  font-size: 2rem;
-  background-color: rgb(164, 164, 221);
-  font-weight: bold;
-  color: black;
-  transition: all 0.3s ease; /* animación suave */
-}
+
 
 .reducircontraste{
     visibility: hidden;
