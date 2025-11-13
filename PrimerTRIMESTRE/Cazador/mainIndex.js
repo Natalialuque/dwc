@@ -10,6 +10,12 @@ boton.onclick = function(){
     return; // Detiene la ejecución si hay coincidencia
   }
 
+  //verificamos que la palabra no este vacia 
+  if(palabra.length == 0){
+    alert("La palabra no puede estar vacia");
+    return;
+  }
+
   // Guardamos la palabra como propiedad del objeto window
   window.palabraCompartida = palabra;
 
