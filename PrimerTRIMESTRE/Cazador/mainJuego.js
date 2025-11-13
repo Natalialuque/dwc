@@ -1,14 +1,16 @@
-//obtener palabra 
+// Obtener palabra compartida desde la ventana principal
 const palabra = window.opener.palabraCompartida.toLowerCase();
 
-// Variables 
-let letrasAcertadas = Array(palabra.length).fill("_");
-let fallosRestantes = 7;
-let tiempoPorLetra = 15;
-let tiempoRestante = tiempoPorLetra;
-let temporizador;
+// Definimos el estado del juego como un objeto (apuntes: objetos definidos por el usuario)
+let juego = {
+    letrasAcertadas: Array(palabra.length).fill("_"), // uso de Array.fill()
+    fallosRestantes: 7,
+    tiempoPorLetra: 5, // cada letra tiene 5 segundos
+    tiempoRestante: 5,
+    temporizador: null
+};
 
-//elementos Index
+// Elementos del DOM
 const contadorFallos = document.getElementById("contadorFallos");
 const mostrarPalabra = document.getElementById("mostrarPalabra");
 const mostrarPalabraOculta = document.getElementById("mostrarPalabraOculta");
@@ -23,93 +25,104 @@ document.getElementById("verPalabraOculta").onclick = () => {
     mostrarPalabraOculta.innerHTML = palabra;
 };
 
-// Mostrar guiones y letras acertadas
-function actualizarPalabraMostrada() {
-    mostrarPalabra.textContent = letrasAcertadas.join(" ");
-}
+// Métodos del objeto juego (apuntes: métodos y propiedades)
+juego.actualizarPalabraMostrada = function () {
+    mostrarPalabra.textContent = this.letrasAcertadas.join(" ");
+};
 
-// Actualizar contador de fallos
-function actualizarFallos() {
-    contadorFallos.textContent = fallosRestantes;
-}
+juego.actualizarFallos = function () {
+    contadorFallos.textContent = this.fallosRestantes;
+};
 
-// Actualizar tiempo visible
-function actualizarTiempoTexto() {
-    tiempoTexto.textContent = ` Tiempo restante: ${tiempoRestante} segundos`;
-}
+juego.actualizarTiempoTexto = function () {
+    tiempoTexto.textContent = `Tiempo restante: ${this.tiempoRestante} segundos`;
+};
 
-// Temporizador de 5 segundos por letra
-function iniciarTemporizador() {
-    clearInterval(temporizador);
-    tiempoRestante = tiempoPorLetra;
-    actualizarTiempoTexto();
+juego.iniciarTemporizador = function () {
+    clearInterval(this.temporizador);
+    this.tiempoRestante = this.tiempoPorLetra;
+    this.actualizarTiempoTexto();
 
-    temporizador = setInterval(() => {
-        tiempoRestante--;
-        actualizarTiempoTexto();
+    this.temporizador = setInterval(() => {
+        this.tiempoRestante--;
+        this.actualizarTiempoTexto();
 
-        if (tiempoRestante <= 0) {
-            clearInterval(temporizador);
-            alert("¡Se acabó el tiempo para escribir la letra!");
-            botonComprobar.disabled = true;
-            letrasEscribir.disabled = true;
+        if (this.tiempoRestante <= 0) {
+            clearInterval(this.temporizador);
+
+            // Contamos como fallo automático
+            this.fallosRestantes--;
+            this.actualizarFallos();
+            fallosUsuario.innerHTML += `<br> Tiempo agotado`;
+
+            // Reiniciamos el temporizador para la siguiente letra
+            this.iniciarTemporizador();
+
+            // Verificar derrota
+            if (this.fallosRestantes <= 0) {
+                alert("¡Has perdido!");
+                clearInterval(this.temporizador);
+            }
         }
     }, 1000);
-}
+};
 
-// Comprobar letra
-function comprobarLetra() {
+juego.comprobarLetra = function () {
     const letra = letrasEscribir.value.toLowerCase();
     letrasEscribir.value = "";
 
+    // Validación con expresión regular (apuntes: RegExp)
     if (!letra || letra.length !== 1 || !/^[a-zñ]$/i.test(letra)) return;
 
     let acierto = false;
-    for (let i = 0; i < palabra.length; i++) {
-        if (palabra[i] === letra && letrasAcertadas[i] === "_") {
-            letrasAcertadas[i] = letra;
+
+    // Uso de forEach para recorrer la palabra (apuntes: Array.forEach)
+    palabra.split("").forEach((char, i) => {
+        if (char === letra && this.letrasAcertadas[i] === "_") {
+            this.letrasAcertadas[i] = letra;
             acierto = true;
         }
-    }
+    });
 
     if (acierto) {
-        actualizarPalabraMostrada();
+        this.actualizarPalabraMostrada();
     } else {
-        fallosRestantes--;
-        actualizarFallos();
+        this.fallosRestantes--;
+        this.actualizarFallos();
         fallosUsuario.innerHTML += `<br> La letra "${letra}" no es correcta.`;
     }
 
-    iniciarTemporizador(); // Reinicia el tiempo para la siguiente letra
+    this.iniciarTemporizador(); // Reinicia el tiempo para la siguiente letra
 
-    // Verificar victoria
-    if (!letrasAcertadas.includes("_")) {
-        clearInterval(temporizador);
-        alert("¡Has ganado!");
+    // Verificar victoria con Array.includes (apuntes: Array.includes)
+    if (!this.letrasAcertadas.includes("_")) {
+        clearInterval(this.temporizador);
+        alert(" ¡Has ganado!");
         botonComprobar.disabled = true;
         letrasEscribir.disabled = true;
     }
 
     // Verificar derrota
-    if (fallosRestantes <= 0) {
-        clearInterval(temporizador);
+    if (this.fallosRestantes <= 0) {
+        clearInterval(this.temporizador);
         alert("¡Has perdido!");
         botonComprobar.disabled = true;
         letrasEscribir.disabled = true;
     }
-}
+};
 
 // Iniciar juego
 botonInicio.addEventListener("click", () => {
-    letrasAcertadas = Array(palabra.length).fill("_");
-    fallosRestantes = 7;
+    juego.letrasAcertadas = Array(palabra.length).fill("_");
+    juego.fallosRestantes = 7;
     botonComprobar.disabled = false;
     letrasEscribir.disabled = false;
     fallosUsuario.textContent = "";
-    actualizarPalabraMostrada();
-    actualizarFallos();
-    iniciarTemporizador();
+    juego.actualizarPalabraMostrada();
+    juego.actualizarFallos();
+    juego.iniciarTemporizador();
 });
 
 // Comprobar letra al hacer clic
-botonComprobar.addEventListener("click", comprobarLetra);
+botonComprobar.addEventListener("click", () => juego.comprobarLetra());
+
