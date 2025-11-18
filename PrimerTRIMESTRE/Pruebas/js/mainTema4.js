@@ -162,14 +162,96 @@ function createNode(tipoNodo, tipoTexto) {
 
 //amplio texto, cambio color de fondo, caambio color de letras 
 
-for (let sec of document.getElementsByTagName("p")) {
-    sec.onmouseover = function () {
-        this.className = "ampliarcontraste";
-    };
+// for (let sec of document.getElementsByTagName("p")) {
+//     sec.onmouseover = function () {
+//         this.className = "ampliarcontraste";
+//     };
 
-    sec.onmouseout = function () {
-        this.className = "reducircontraste";
-    };
-}
+//     sec.onmouseout = function () {
+//         this.className = "reducircontraste";
+//     };
+// }
 
 //el texto no se ve, pero cuando me coloco encima si 
+
+// document.getElementById("inserta").onclick = function () {
+//     const newNode = document.createElement("li");
+//     const newNodeText = document.createTextNode(document.getElementById("animal").value);
+//     const listaAnimales = document.getElementById("listaAnimales");
+//     newNode.appendChild(newNodeText);
+//     newNode.style.color = "red";
+
+//     // document.getElementById("listaAnimales").appendChild(newNode);
+
+//     let numAnimales = listaAnimales.querySelectorAll("li").length;
+//     console.log(numAnimales);
+
+//     // listaAnimales.insertBefore(newNode, listaAnimales.querySelectorAll("li")[3]);
+
+//     // listaAnimales.querySelectorAll("li")[0].before(newNode);
+
+//     let nodoEliminado = listaAnimales.replaceChild(newNode, listaAnimales.querySelectorAll("li")[3]);
+//     listaAnimales.appendChild(nodoEliminado);
+
+//}
+
+// document.getElementById("inserta").onclick = function () {
+
+//     const arrayAnimales = new Array ("León", "Jirafa", "Foca", "Perro", "Gato", "Lagartija", "Águila", "Avestruz", "Elefante");
+   
+
+//     const newNode = document.createElement("li");
+//     newNode.innerText = arrayAnimales[0];
+//     newNode.style.color = "red";
+//     newNode.style.backgroundColor = "blue";
+//     newNode.style.border = "1px solid black";
+//     newNode.style.borderRadius = "15px";
+//     newNode.style.paddingLeft = "2%";
+//     newNode.style.boxShadow = "5px 5px lightblue";
+
+//     let listaAnimales = document.getElementById("listaAnimales");
+
+//     listaAnimales.appendChild(newNode);
+
+//     for (let animal = 1; animal < arrayAnimales.length; animal++) {
+//         let newNodeCloned = newNode.cloneNode(false);
+//         newNodeCloned.innerText = arrayAnimales[animal];
+//         listaAnimales.appendChild(newNodeCloned);
+//     }
+
+// }
+
+//////////////////////////////////
+document.getElementById("inserta").onclick = function () {
+
+    const arrayAnimales = new Array ("León", "Jirafa", "Foca", "Perro", "Gato", "Lagartija", "Águila", "Avestruz", "Elefante");
+   
+    document.getElementById("animal").disabled = true;
+
+
+    const newNode = document.createElement("li");
+    newNode.innerText = arrayAnimales[0];
+    newNode.style.color = "#ffaa00";
+    newNode.style.backgroundColor = "blue";
+    newNode.style.border = "1px solid black";
+    newNode.style.borderRadius = "15px";
+    newNode.style.paddingLeft = "2%";
+    newNode.style.boxShadow = "5px 5px lightblue";
+
+    let listaAnimales = document.getElementById("listaAnimales");
+
+    listaAnimales.appendChild(newNode);
+
+    for (let animal = 1; animal < arrayAnimales.length; animal++) {
+        let newNodeCloned = newNode.cloneNode(false);
+        newNodeCloned.innerText = arrayAnimales[animal];
+        listaAnimales.appendChild(newNodeCloned);
+    }
+
+    console.log(document.getElementById("listaAnimales").childNodes)
+    console.log("------------------------------------------------")
+    console.log(document.getElementById("listaAnimales").children)
+
+
+
+}
