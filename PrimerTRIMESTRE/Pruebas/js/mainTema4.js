@@ -248,6 +248,7 @@ document.getElementById("inserta").onclick = function () {
         listaAnimales.appendChild(newNodeCloned);
     }
 
+    //Puedes ver un monton de cosas por consola con esto para saber con que estoy trabajando
     console.log(document.getElementById("listaAnimales").childNodes)
     console.log("------------------------------------------------")
     console.log(document.getElementById("listaAnimales").children)
