@@ -1,6 +1,7 @@
 
-// Obtener palabra compartida desde la ventana principal
-let palabra = window.opener.palabraCompartida.toLowerCase();
+// Obtener palabra 
+let palabra = document.getElementById("palabraOculta").value;
+let ComprobarPalabra= document.getElementById("ComprobarPalabra");
 
 // Variables de estado del juego
 let caracteresLetra = palabra.length;
@@ -22,6 +23,31 @@ let botonComprobar = document.getElementById("comprobarLetra");
 let botonInicio = document.getElementById("inicioJuego");
 let RecuentoJuegos= document.getElementById("RecuentoJuegos");
 let volverJUGAR = document.getElementById("volverJUGAR");
+
+
+ComprobarPalabra.onclick = function(){
+  let palabra = document.getElementById("palabraOculta").value;
+  const regex = /["-]?\d{1,3}(?:,\d{3})*(?:\.\d+)?["-]?/g;
+
+  // Verificamos si la palabra contiene algún patrón prohibido
+  if (regex.test(palabra)) {
+    alert("La palabra no puede contener números ni caracteres especiales como comillas, guiones, comas o puntos. Por favor, introduce otra.");
+    return; // Detiene la ejecución si hay coincidencia
+  }
+
+  //verificamos que la palabra no este vacia 
+ else if(palabra.length == 0){
+    alert("La palabra no puede estar vacia");
+    return;
+  }
+
+else{
+  alert("la palabra es correcta, puede iniciar")
+
+}
+
+};
+
 
 // Mostrar palabra oculta al pulsar el boton
 document.getElementById("verPalabraOculta").onclick = () => {
@@ -76,7 +102,7 @@ function iniciarTemporizador() {
     }, 1000);
 }
 
-//let ganar;
+let ganar;
 
 //Funcion para ir comprobando las letras que se introducen 
 function comprobarLetra() {
@@ -127,11 +153,12 @@ function comprobarLetra() {
     }
 }
 
-//let contadorPartidas=0;
+
+
 
 // Para que empiece a funcionar todo despues de darle al boton de inicio 
 botonInicio.onclick=function(){
-letrasAcertadas = Array(palabra.length).fill("_");
+   letrasAcertadas = Array(palabra.length).fill("_");
     fallosRestantes = (caracteresLetra/2)+1; ;
     botonComprobar.disabled = false;
     letrasEscribir.disabled = false;
@@ -140,19 +167,12 @@ letrasAcertadas = Array(palabra.length).fill("_");
     actualizarFallos();
     iniciarTemporizador();
 
-    // //No me va a funcionar porque si quiero iniciar otra partida tengo que volver a otra pagina principal y no se como guardarlo al moverme entre pantallas
-    //seria hacer un contador de partidas, la palabra ir mostrandola y el tiempo ir acumulandolo en una variable cad avez que se averigue una palabra
-
-    // RecuentoJuegos.innerHTML="Partida:"+contadorPartidas+",Palabra"+palabra+","+ganar;
-    // contadorPartidas++;
+    RecuentoJuegos.innerHTML="Partida:"+",Palabra"+palabra+","+ganar;
 }
 
-// volverJUGAR.onclick=function(){
-//      window.open("index.html");
-// }
+volverJUGAR.onclick=function(){
+     window.open("index.html");
+}
 
 // Comprobar letra al hacer clic
 botonComprobar.addEventListener("click", comprobarLetra);
-
-
-

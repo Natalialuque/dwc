@@ -48,5 +48,6 @@ let interval = setInterval(function () {
         clearInterval(interval);
 }, 50);
 
+
 meter1.value += 13;
 info.innerHTML = meter1.value; 

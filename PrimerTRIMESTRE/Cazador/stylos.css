@@ -126,3 +126,8 @@ header h1{
 #FallosDelUsuario{
     color: white;
 }
+
+#tituloJuegosAnteriores{
+    color: white;
+    text-align: center;
+}

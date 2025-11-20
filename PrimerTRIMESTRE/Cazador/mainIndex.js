@@ -1,8 +1,8 @@
 let boton = document.getElementById("comenzar");
 
 boton.onclick = function(){
-  const palabra = document.getElementById("palabraOculta").value;
-  const regex = /["-]?\d{1,3}(?:,\d{3})*(?:\.\d+)?["-]?/g;
+  let palabra = document.getElementById("palabraOculta").value;
+  let regex = /["-]?\d{1,3}(?:,\d{3})*(?:\.\d+)?["-]?/g;
 
   // Verificamos si la palabra contiene algún patrón prohibido
   if (regex.test(palabra)) {
