@@ -38,16 +38,71 @@ const meter1 = document.getElementById("meter1");
 
 
 
-info.innerText = document.getElementById("lista").options[document.getElementById("lista").selectedIndex].value;
-info.innerText += " - " + document.getElementById("lista").options[document.getElementById("lista").selectedIndex].text;
+// info.innerText = document.getElementById("lista").options[document.getElementById("lista").selectedIndex].value;
+// info.innerText += " - " + document.getElementById("lista").options[document.getElementById("lista").selectedIndex].text;
 
-let interval = setInterval(function () {
-    if (progress1.value < progress1.max)
-        progress1.value ++;
-    else
-        clearInterval(interval);
-}, 50);
+// let interval = setInterval(function () {
+//     if (progress1.value < progress1.max)
+//         progress1.value ++;
+//     else
+//         clearInterval(interval);
+// }, 50);
 
 
-meter1.value += 13;
-info.innerHTML = meter1.value; 
+// meter1.value += 13;
+// info.innerHTML = meter1.value; 
+
+document.body.onresize= function(){
+    info.innerHTML= window.innerWidth+" x "+window.innerHeight;
+}
+
+document.getElementById("main1").ondblclick = changeColor;
+document.getElementById("main1").onmouseover = changeColor;
+document.getElementById("main1").onmouseout = changeColor;
+
+document.getElementById("aside1").ondblclick = changeColor;
+document.getElementById("aside1").onmouseover = changeColor;
+document.getElementById("aside1").onmouseout = changeColor;
+
+let pMain = document.getElementById("pMain");
+let pAside = document.getElementById("pAside");
+
+function changeColor(ev) {
+    if (this.id == "main1") 
+        switch(ev.type) {
+            case "dblclick":
+                this.style.backgroundColor="#F2BDB3";
+                pMain.innerText = "Doble click";
+            break;
+            case "mouseover":
+                this.style.backgroundColor="#914E41";
+                pMain.innerText = "Ratón dentro";
+            break;
+            case "mouseout":
+                this.style.backgroundColor="#C92202";
+                pMain.innerText = "Sale ratón";
+            break;
+        }
+    else // aside
+        switch(ev.type) {
+            case "dblclick":
+                this.style.backgroundColor="#B9DCEB";
+                pAside.innerText = "Doble click";
+            break;
+            case "mouseover":
+                this.style.backgroundColor="#3E7A94";
+                pAside.innerText = "Ratón dentro";
+            break;
+            case "mouseout":
+                this.style.backgroundColor="#044561";
+                pAside.innerText = "Sale ratón";
+            break;
+        }
+}
+
+
+/**Viene muy bien porque asi no me recarga la pagina , ni me borra los datosintroducidos por formulario */
+document.getElementById("bSend").addEventListener("click", function (ev) {
+    ev.preventDefault();
+    // ....
+})
