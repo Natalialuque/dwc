@@ -10,38 +10,87 @@ let diametro = document.getElementById("diametro"); //coger el diametro
 let nombre = document.getElementById("nombre"); //nombre del planeta
 let informacion = document.getElementById("info"); //para mostrar las cosas 
 let contenedorDerecha = document.getElementById("contenedorDerecha"); //donde mostramos los planetas
+let errores = document.getElementById("errores"); //para enseñar los errores 
 
-//cuando pulsamos el boton ...
-boton.onclick=function(){
+ let lista =[];
+ //cuando pulsamos el boton ...
+ boton.onclick=function(){
+
+
+    //comprobar de que los campos no esten vacios 
+    if(nombre.value.trim()==="" || x.value.trim()=== "" || y.value.trim()=== "" || diametro.value.trim()=== ""){
+        errores.innerHTML="Error: falta algun campo por rellenar";
+        return;
+    }
     
-    //para mostrar el nombre de los planetas o satelites
-    let nombrePlaneSate = document.createElement("p");
-    nombrePlaneSate.textContent = nombre.value;
-    info.appendChild(nombrePlaneSate);
+
+    // comprobar que al menos un radio esté seleccionado
+    if (!planeta.checked && !satelite.checked) {
+        errores.innerHTML="Error: Debes seleccionar si es planeta o satélite.";
+        return;
+    }
+
+     // comprobar que X, Y y diámetro sean números
+        if (isNaN(x.value) || isNaN(y.value) || isNaN(diametro.value)) {
+            errores.innerHTML = "Error: X o Y o el diámetro deben ser números.";
+            return;
+        }
 
 
-    //crear un nuevo planeta con la información que se necesita
-    let nuevoPlaneSate = document.createElement("div");
+
+    errores.innerHTML=""; //para borrar el campo
+
+     //para mostrar el nombre de los planetas o satelites
+     let nombrePlaneSate = document.createElement("p");
+     nombrePlaneSate.textContent = nombre.value;
+     info.appendChild(nombrePlaneSate);
+
+
+     //crear un nuevo planeta con la información que se necesita
+     let nuevoPlaneSate = document.createElement("div");
     
-    //caracteristicas que tiene que tener el planeta
-    nuevoPlaneSate.style.backgroundColor=color.value;
-    nuevoPlaneSate.style.width=diametro.value + "px";
-    nuevoPlaneSate.style.height=diametro.value + "px";
-    nuevoPlaneSate.style.borderRadius = "50%";
+     //caracteristicas que tiene que tener el planeta
+     nuevoPlaneSate.style.backgroundColor=color.value;
+     nuevoPlaneSate.style.width=diametro.value + "px";
+     nuevoPlaneSate.style.height=diametro.value + "px";
+     nuevoPlaneSate.style.borderRadius = "50%";
 
-    //posicionamiento del planetita con las cordenadas cordenadas
-    nuevoPlaneSate.style.position="absolute";
-    nuevoPlaneSate.style.left=x.value +"px";
-    nuevoPlaneSate.style.right=y.value +"px";
-
-
-    //añadir al contenedor 
-    contenedorDerecha.appendChild(nuevoPlaneSate);
+     //posicionamiento del planetita con las cordenadas cordenadas
+     nuevoPlaneSate.style.position="absolute";
+     nuevoPlaneSate.style.left=x.value +"px";//mueve por el eje x
+     nuevoPlaneSate.style.top=y.value +"px";//mueve por el eje y
 
 
+     //tenemos que controlar si se elegie luna o si se elige planeta 
+    if (satelite.checked) {
+         // aquí aplicas el borde blanco
+          nuevoPlaneSate.style.border = "5px solid white";
+     }
 
 
-}
+     //Añadimos el nombre del planeta/satelite dentro del div 
+     nuevoPlaneSate.textContent = nombre.value;
+
+     //Para el tema de profundidad 
+     let profundidad = Math.floor(Math.random() * 101); // entre 0 y 100
+     let factorEscala = 0.5 + (profundidad / 200); //para realizar la escala y que no se sobrepase
+     nuevoPlaneSate.style.transform = "scale(" + factorEscala + ")";
+
+    
+     lista.push(nuevoPlaneSate);
+     //añadir al contenedor 
+     contenedorDerecha.appendChild(nuevoPlaneSate);
+
+
+
+ }
+
+
+
+
+
+
+ /**NO ME HACE FALTA PORQUE HE USADO EL CREATEELEMENT */
 
 /**Funcion para la creacción de nodos */
 function createNode(tipoNodo, tipoTexto) {

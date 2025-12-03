@@ -35,6 +35,16 @@ body {
   min-height: 100vh;
   background-image: url("/PrimerTRIMESTRE/galaxia/fondo.png");               
   box-sizing: border-box;
+  position: relative;
+  overflow: hidden;   /* oculta lo que se salga */
+}
+
+.contenedorDerecha div {
+  display: flex;
+  align-items: center;    /* centra verticalmente */
+  justify-content: center;/* centra horizontalmente */
+  font-size: 12px;        /* ajusta tamaño de texto */
+  color: white;           /* contraste sobre el color del planeta */
 }
 
 /* Etiquetas */
@@ -140,4 +150,12 @@ body {
   box-sizing: border-box;
 }
 
-#textoX { margin-right: 10px; }
+#textoX { 
+  margin-right: 10px; 
+}
+
+.errores{
+  color: red;
+  text-align: center;
+}
+
