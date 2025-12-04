@@ -151,3 +151,11 @@ function press(ev){
     }
 }
 
+
+document.body.addEventListener("mousemove",getCoord);
+
+function getCoord(event){
+   // info.innerHTML= event.type; Para ver que funciona el mousemove
+
+   info.innerHTML="cordenada X: <span style='color:orange'>" +event.pageX+ "</span> - cordenada Y:<span style='color:orange'>"+event.pageY+"</span>";
+}

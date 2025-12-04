@@ -13,32 +13,56 @@ let contenedorDerecha = document.getElementById("contenedorDerecha"); //donde mo
 let errores = document.getElementById("errores"); //para enseñar los errores 
 
  let lista =[];
- //cuando pulsamos el boton ...
+ //cuando pulsamos el boton 
  boton.onclick=function(){
 
-
+    let mensajeErrores=[];
     //comprobar de que los campos no esten vacios 
-    if(nombre.value.trim()==="" || x.value.trim()=== "" || y.value.trim()=== "" || diametro.value.trim()=== ""){
-        errores.innerHTML="Error: falta algun campo por rellenar";
-        return;
+    if(nombre.value.trim()===""){
+        mensajeErrores.push("El nombre no puede estar vacio");
     }
+     if(x.value.trim()=== ""){
+        mensajeErrores.push("La X no puede estar vacia");
+    }
+     if(y.value.trim()=== ""){
+        mensajeErrores.push("La Y no puede estar vacia");
+        
+    }
+     if(diametro.value.trim()=== ""){
+       mensajeErrores.push("El diametro no puede estar vacio");
+    }
+   
     
-
     // comprobar que al menos un radio esté seleccionado
     if (!planeta.checked && !satelite.checked) {
-        errores.innerHTML="Error: Debes seleccionar si es planeta o satélite.";
+        mensajeErrores.push("Debes seleccionar si es planeta o satélite.");
+        
+    }
+
+    // comprobar que X, Y y diámetro sean números
+    if(isNaN(x.value)){
+        mensajeErrores.push("La X debe ser un numero");
+        
+    }
+
+    if (isNaN(y.value)) {
+          mensajeErrores.push("La Y debe ser un numero");
+          
+    }
+
+     if (isNaN(diametro.value)) {
+          mensajeErrores.push("El diametro debe ser un numero");
+          
+    }
+
+    // si hay errores, los mostramos y detenemos la ejecución
+    if (mensajeErrores.length > 0) {
+        errores.innerHTML = mensajeErrores.join("<br>");
         return;
     }
 
-     // comprobar que X, Y y diámetro sean números
-        if (isNaN(x.value) || isNaN(y.value) || isNaN(diametro.value)) {
-            errores.innerHTML = "Error: X o Y o el diámetro deben ser números.";
-            return;
-        }
-
-
-
     errores.innerHTML=""; //para borrar el campo
+
 
      //para mostrar el nombre de los planetas o satelites
      let nombrePlaneSate = document.createElement("p");
@@ -82,16 +106,10 @@ let errores = document.getElementById("errores"); //para enseñar los errores
      contenedorDerecha.appendChild(nuevoPlaneSate);
 
 
-
  }
 
 
-
-
-
-
  /**NO ME HACE FALTA PORQUE HE USADO EL CREATEELEMENT */
-
 /**Funcion para la creacción de nodos */
 function createNode(tipoNodo, tipoTexto) {
     let nodo;
