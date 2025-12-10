@@ -106,7 +106,54 @@ let errores = document.getElementById("errores"); //para enseñar los errores
      contenedorDerecha.appendChild(nuevoPlaneSate);
 
 
- }
+
+
+     // Añadir manejador de evento al nuevo planeta creado
+    nuevoPlaneSate.addEventListener("click", function() {
+        if (lista.length > 1) {
+            let primero = lista[0];
+
+            // Intercambiar coordenadas y profundidad
+            let tempLeft = this.style.left;
+            let tempTop = this.style.top;
+            let tempTransform = this.style.transform;
+
+            this.style.left = primero.style.left;
+            this.style.top = primero.style.top;
+            this.style.transform = primero.style.transform;
+
+            primero.style.left = tempLeft;
+            primero.style.top = tempTop;
+            primero.style.transform = tempTransform;
+
+            // Actualizar el orden en la lista de planetas
+            let index = lista.indexOf(this);
+            if (index > -1) {
+                lista.splice(index, 1);
+                lista.unshift(this);
+            }
+
+           // Recolocar planetas 
+             contenedorDerecha.innerHTML = "";
+                 for (let i = 0; i < lista.length; i++) {
+                 contenedorDerecha.appendChild(lista[i]);
+            }
+
+            // Actualizar la lista de  nombres
+             info.innerHTML = "";
+             for (let i = 0; i < lista.length; i++) {
+                let nombrePlaneSate = document.createElement("p");
+                nombrePlaneSate.textContent = lista[i].textContent;
+                info.appendChild(nombrePlaneSate);
+            }
+         }
+    });
+
+}
+
+
+
+
 
 
  /**NO ME HACE FALTA PORQUE HE USADO EL CREATEELEMENT */
