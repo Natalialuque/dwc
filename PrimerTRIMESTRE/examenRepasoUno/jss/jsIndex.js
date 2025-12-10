@@ -145,6 +145,27 @@ enviar.onclick = () => {
   document.getElementsByTagName("form")[0].dispatchEvent(new Event("submit", { cancelable: true }));
 };
 
+// enviar.onclick = () => {
+//   // dispara el submit para que pase por onsubmit
+//   if (enviar.disabled) return; // no actúa si está deshabilitado
+
+//   // buscar el radio "si"
+//   let inputs = document.getElementsByTagName("input");
+//   let condSi = null;
+//   for (let i = 0; i < inputs.length; i++) {
+//     if (inputs[i].type === "radio" && inputs[i].value === "si") {
+//       condSi = inputs[i];
+//       break;
+//     }
+//   }
+
+//   if (condSi && condSi.checked) {
+//     alert("Enviando formulario ...");
+//   } else {
+//     alert("Debes marcar 'SI Acepto'");
+//   }
+// };
+
 // Crear mensajes de error al cargar
 let pErrorDni = createNode("p", "DNI inválido");
 pErrorDni.style.color = "red";
