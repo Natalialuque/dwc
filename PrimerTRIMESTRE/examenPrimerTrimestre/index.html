@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>TechCorp</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/mainJsindex.js" type="module"></script>
+
+</head>
+<body class="container">
+    <h1 id="main-title">Sistema de Gestión TechCorp</h1>
+    <h3 id="er"></h3>
+    <aside>
+        <fieldset>
+            <legend>Configuracion Visual</legend>
+            <h4>Tema interfaz</h4>
+                <label for="claro">
+                    <input type="radio" id="claro" name="tema" value="claro"> claro
+               </label>
+            <br>
+               <label for="oscuro">
+                    <input type="radio" id="oscuro" name="tema" value="oscuro"> Oscuro
+               </label>
+            <br>
+                <label for="AltoContraste">
+                    <input type="radio" id="AltoContraste" name="tema" value="AltoContraste"> Alto Contraste
+               </label>
+            <br>
+            <br>
+                <label>Tamaño de fuente Global:</label>
+                <input type="range" name="barrita" value="16" aria-valuemin="10" aria-valuemax="24">
+            <br>
+                <input type="submit" name="ResetConfiguration" value="Resetear Configuracion">
+        </fieldset>
+
+        <fieldset>
+            <legend>Alta Empleado</legend>
+            <h1 id="error"></h1>
+
+            <label>Nombre:
+                <input type="text" name="nombre" value="">
+            </label>
+            <br>
+                <label>Email:
+                <input type="text" name="email" value="">
+                </label>
+            <br>
+                <label>Contraseña:
+                <input id="contraseña" type="password" name="Contraseña" value="">
+                </label>
+            <br>
+                <label>Confirmar Pass:
+                <input  id="Confircontraseña" type="password" name="Contraseña" value="">
+                </label>
+            <br>
+                <label>Fecha de contratacion:
+                <input id="fecha" type="date" name="fecha">
+                </label>
+            <br>
+                <label>Linkedln
+                <input id="url" type="url" placeholder="http://www..." />
+                </label>
+            <br>
+                <label>Acepto Terminos
+                <input type="checkbox" name="aceptar">
+                </label>
+            <br>
+                <label>Habilidades Técnicas:</label>
+            <br>
+                <select name="habilidades" multiple> 
+                    <option>JS</option>
+                    <option>CSS</option>
+                    <option>HTML</option>
+                    <option>Python</option>
+                    <option>SQL</option>
+                </select>
+             <br>
+                <input type="submit" id="RegistrarEmpleados" name="RegistrarEmpleados" value="Registrar Empleado">
+        </fieldset>
+    </aside>
+    <h3>Plantilla Actual</h3>
+    <button id="botonGenerar">generar informen</button>
+</body>
+</html>

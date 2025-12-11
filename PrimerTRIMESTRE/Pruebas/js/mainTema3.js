@@ -290,7 +290,7 @@ let myArray1 = new Array(1,true,"pepe",45.58,"maria",false);
 // document.getElementById("aEnviarLogin").onclick = function () {
 //     if (!wAux.closed) {
 
-//         wAux.document.getElementById("loginText").value = document.getElementById("login").value;
+//         wAux.document.getElementById("loginTregulart").value = document.getElementById("login").value;
 
 //         wAux.focus();
 //     }
