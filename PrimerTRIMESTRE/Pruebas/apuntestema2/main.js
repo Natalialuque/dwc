@@ -18,7 +18,8 @@
   //var xxx;
 
 /*CONSOLA*/
-//es muy util ya que podemos depurar codigo, visualizar valores,poner mensajes... y cuando el visual no nos da un error en la consola si sale -> f12
+//es muy util ya que podemos depurar codigo, visualizar valores,poner mensajes... y cuando 
+// el visual no nos da un error en la consola si sale -> f12
 
 /*let persona = {
   nombre: "Juan",
@@ -83,7 +84,8 @@
 
 
 /**CONVERSION ENTRE TIPOS DE DATOS */
-  //Cuando realizamos operaciones podemos encontrarnos con que las variables no estan el mismo tipo, por lo que tenedemos que convertirlas para que se puedan realizar bien las operaciones 
+  //Cuando realizamos operaciones podemos encontrarnos con que las variables no estan el mismo tipo, 
+  //por lo que tenemos que convertirlas para que se puedan realizar bien las operaciones 
   //tenemos en cuenta que el operador + siver tanto para concanedar como para sumar 
 
     //tipo entero
@@ -120,7 +122,8 @@
         //     info.innerHTML=("No puede entrar");
         //}
 
-  //ENTEROS --> valores numéricos escritos directamente en el código, y pueden expresarse en distintas bases: decimal, binaria, octal y hexadecimal.
+  //ENTEROS --> valores numéricos escritos directamente en el código, y 
+  //             pueden expresarse en distintas bases: decimal, binaria, octal y hexadecimal.
         //let decimal = 42;       // base 10
         //let binario = 0b101010; // base 2 → 42
         //let octal = 0o52;       // base 8 → 42
@@ -132,7 +135,8 @@
         // let e = 1e3; //notacion esponencial 
         // console.log(e);
 
-  //OBJETOS -->  son una forma concisa y poderosa de crear objetos directamente en el código. Se definen usando llaves {} y contienen pares clave-valor.
+  //OBJETOS -->  son una forma concisa y poderosa de crear objetos directamente en el código. 
+  //             Se definen usando llaves {} y contienen pares clave-valor.
           //  var car = {
           //     manyCars: {
           //           a: "Saab",
@@ -162,7 +166,7 @@
       //== != === !== < > >= ...
       //el == compara valores obviando el tipo , mientras === compara por valor y tipo
         //console.log(0=="0");
-        //console.log(0=="0");
+        //console.log(0==="0");
 
     //ARITMETICOS 
       //+ - / * %  ... 
@@ -305,7 +309,7 @@ info.innerHTML;
             //   }
 
 
-      /*LA for...in, que recorre las claves, for...of recorre los valores directamente.!!!!!!!!!*/
+      /*LA for...in   recorre las claves, for...of recorre los valores directamente.!!!!!!!!!*/
 
       
       //WHILE --> Lo usamos cuando queremos repetir la ejecucion un numero indefinido de veces 
@@ -374,7 +378,8 @@ info.innerHTML;
 
       //FUNCIONES ANONIMAS --> Son funciones que no necesitan tener un nombre para ser ejecutadas, ya que se ejecutaran directamente 
 
-      //FUNCIONES ARROW --> Funcionan igual, se escriben asi por tener una sintaxis mas simple, realmente lo usamos para funciones simples para ahorrarnos codigo 
+      //FUNCIONES ARROW --> Funcionan igual, se escriben asi por tener una sintaxis mas simple, realmente lo usamos
+      //                     para funciones simples para ahorrarnos codigo 
          
           // function area1 (radio){
           //   return Math.PI *radio * radio;
