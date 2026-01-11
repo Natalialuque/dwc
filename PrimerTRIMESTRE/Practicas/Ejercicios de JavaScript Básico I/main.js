@@ -411,7 +411,6 @@ resul.innerHTML = invertido.join(", ") + "</p>";
 
 
 
-
 /**EJERCICIO  16*/
 //variables 
 let lon = document.getElementById("longitud");
@@ -448,7 +447,6 @@ let re = document.getElementById("resultado5");
 function calcularMenor(a, b) {
   return a < b ? a : b;
 }
-
 bot.onclick = function () {
   let valor1 = parseInt(n1.value);
   let valor2 = parseInt(n2.value);
@@ -468,6 +466,7 @@ bot.onclick = function () {
 
   re.innerHTML = " Menor: "+menor+"Mayor: "+mayor+"Números entre ellos: "+lista.join(" ,");
 }
+
 
 
 /**EJERCICIO  18 */

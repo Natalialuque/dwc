@@ -194,5 +194,375 @@ boton9.onclick=function(){
 
 };
 
+/**EJERCICIO 10 */
+let boton10 = document.getElementById("boton10");
+let num10 = document.getElementById("num10");
+let parImpar = document.getElementById("parImpar");
+
+boton10.onclick=()=>{
+    if(num10.value%2==0){
+        parImpar.innerHTML=num10.value+" es par";
+    }else{
+        parImpar.innerHTML=num10.value+" es impar";
+
+    }
+
+}
+
+/**EJERCICIO 11 */
+let boton11 = document.getElementById("boton11");
+let numePum = document.getElementById("numePum");
+  
+boton11.onclick= function(){
+    for(let i = 1; i<=100; i++){
+        //para sacar multiplos y terminados en 7
+        if(i % 7 === 0 || i % 10 === 7){
+            numePum.innerHTML+="PUM\n";
+        }else{
+            numePum.innerHTML+=i+", ";
+
+        }
+    }
+}
+
+/**EJERCICIO 12 */
+let boton12 = document.getElementById("boton12");
+let numConteo = document.getElementById("numConteo");
+
+boton12.onclick= function(){
+
+    for(let i =1; i<=300;i++){
+       
+    const span = document.createElement("span");
+    span.innerText = i + " ";
+
+    // Estilo púrpura si es múltiplo de 4 y 9
+    if (i % 4 === 0 && i % 9 === 0) {
+      span.style.color = "purple";
+      span.style.fontSize = "22px";
+    }
+    // Estilo verde si es múltiplo de 4
+    else if (i % 4 === 0) {
+      span.style.color = "green";
+      span.style.fontSize = "20px";
+    }
+    // Estilo rojo si es múltiplo de 9
+    else if (i % 9 === 0) {
+      span.style.color = "red";
+      span.style.fontSize = "18px";
+    }
+
+    numConteo.appendChild(span);
+
+    // Salto de línea cada 10 números
+    if (i % 10 === 0) {
+      numConteo.appendChild(document.createElement("br"));
+    }
+    }
 
 
+
+}
+
+/**
+ * EJERCICIO 13
+ */
+let boton13 = document.getElementById("boton13");
+let dados = document.getElementById("dados");
+
+boton13.onclick=function(){
+
+      let array = Array(13).fill(0); // índices del 2 al 12
+
+
+    for(let i=1; i<=36000;i++){
+        let dado1 = Math.floor(Math.random()*6+1);
+        let dado2 = Math.floor(Math.random()*6+1);
+        let suma = dado1+dado2;
+        array[suma]++;
+    }
+    dados.innerHTML = ""; // limpiar antes de mostrar
+
+  for (let i = 2; i <= 12; i++) {
+    dados.innerHTML += "Suma " + i + ": " + array[i] + " veces<br>";
+  
+  }
+}
+
+/**
+ * EJERCICIO 14
+ */
+
+let boton14_1 = document.getElementById("boton14_1");
+let boton14_2 = document.getElementById("boton14_2");
+let numeroInput = document.getElementById("numeroInput");
+let resultado = document.getElementById("resultado");
+
+let numeros = [];
+let entradaFinalizada=false;
+
+boton14_1.onclick = () => {
+    if (parseInt(numeroInput.value) === 0) {
+        entradaFinalizada = true;
+        alert("no puedes introducir mas numeros, pulsa el siguiente boton");
+        boton14_1.disabled = true;
+    } else {
+        numeros.push(parseInt(numeroInput.value));
+        numeroInput.value = "";   
+        numeroInput.focus();      //para poder escribir el siguiente numero directamente
+    }
+}
+
+boton14_2.onclick=()=>{
+    //para tener el mayor y el menor
+    const mayor = Math.max(...numeros);
+    const menor = Math.min(...numeros);
+
+      // Ocurrencias
+        let ocurrencias = {};
+        for (let i = 0; i < numeros.length; i++) {
+            let num = numeros[i];
+            ocurrencias[num] = (ocurrencias[num] || 0) + 1;
+        }
+
+    resultado.innerHTML += "Orden normal: " + numeros.join(", ") + "<br>";
+    resultado.innerHTML+="Orden descentende: "+ numeros.sort((a, b) => b - a)+"<br>";
+    resultado.innerHTML+= "numero mayor: "+mayor+ " (" + ocurrencias[mayor] + " veces)<br>";;
+    resultado.innerHTML+= "numero menor: "+menor+ " (" + ocurrencias[menor] + " veces)<br>";;
+
+}
+
+
+/**EJERCICIO 15 */
+let boton15 = document.getElementById("boton15");
+let boton15_2 = document.getElementById("boton15_2");
+let cadena = document.getElementById("cadena");
+let resultado15 = document.getElementById("resultado15");
+
+let array=[];
+boton15.onclick=function(){
+    let dato;
+   if (!isNaN(cadena.value)) {
+    dato = parseFloat(cadena.value); // número
+  } else if (cadena.value.toLowerCase() === "true" || cadena.value.toLowerCase() === "false") {
+    dato = cadena.value.toLowerCase() === "true"; // booleano
+  } else {
+    dato = cadena.value; // texto
+  }
+
+  array.push(dato);
+  cadena.value="";
+}
+
+
+boton15_2.onclick=function(){
+    // Invertir manualmente con bucle
+  let invertido = [];
+  for (let i = array.length - 1; i >= 0; i--) {
+    invertido.push(array[i]);
+  }
+
+resultado15.innerHTML = invertido.join(", ") + "</p>";
+}
+
+/**EJERCICIO 16 */
+let boton16 = document.getElementById("boton16");
+let longitud16 = document.getElementById("longitud16");
+let contraseñas = document.getElementById("contraseña");
+
+
+boton16.onclick=function(){
+    const caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()-_=+[]{}<>?/|";
+  let contraseña = "";
+
+  for (let i = 0; i < longitud16.value; i++) {
+    const indice = Math.floor(Math.random() * caracteres.length);
+    contraseña += caracteres[indice];
+  }
+
+  contraseñas.innerHTML = contraseña;
+}
+
+/**EJERCICIO 17 */
+let boton17 = document.getElementById("boton17");
+let valor1 = document.getElementById("valor1");
+let valor2 = document.getElementById("valor2");
+let resultado16 = document.getElementById("resultado16");
+
+function calcularMenor(a, b) {
+  return a < b ? a : b;
+}
+
+boton17.onclick = function () {
+  let valor1 = parseInt(n1.value);
+  let valor2 = parseInt(n2.value);
+
+  if (isNaN(valor1) || isNaN(valor2)) {
+    alert("Por favor, introduce dos números válidos.");
+    return;
+  }
+
+  let menor = calcularMenor(valor1, valor2);
+  let mayor = valor1 === menor ? valor2 : valor1;
+
+  let lista = [];
+  for (let i = menor + 1; i < mayor; i++) {
+    lista.push(i);
+  }
+
+  resultado16.innerHTML = " Menor: "+menor+"Mayor: "+mayor+"Números entre ellos: "+lista.join(" ,");
+}
+
+/**EJERCICIO 18 */
+let boton18 = document.getElementById("boton18");
+let num18 = document.getElementById("num18");
+let opcion = document.getElementById("opcion");
+let resultado18 = document.getElementById("resultado18");
+
+function multiplo2(n){
+    return n%2===0;
+}
+
+function multiplo5(n){
+    return n%5===0;
+}
+
+function multiplo3(n){
+    return n%3===0;
+}
+
+boton18.onclick=function(){
+  
+    switch(opcion.value){
+        case "1" :
+            resultado18.innerHTML=multiplo2(num18.value)
+                ? num18.value+ " es multiplo"
+                : num18.value+ " no es multiplo";
+            break;
+        case "2" :
+            resultado18.innerHTML=multiplo3(num18.value)
+                ? num18.value+ " es multiplo"
+                : num18.value+ " no es multiplo";
+            break;
+        case "3" :
+            resultado18.innerHTML=multiplo5(num18.value)
+                ? num18.value+ " es multiplo"
+                : num18.value+ " no es multiplo";
+            break;
+        case "0":
+            resultado18.innerHTML="fin programa";
+            break;
+        default :
+            resultado18.innerHTML="error";
+    }
+
+}
+
+/**EJERCICIO 19 */
+let nombre19 = document.getElementById("nombre19");
+let apellidos19 = document.getElementById("apellidos19");
+let horas19 = document.getElementById("horas19");
+let turnoRadios = document.getElementsByName("turno"); 
+let agregar19 = document.getElementById("agregar19");
+let finalizar19 = document.getElementById("finalizar19");
+let resultado19 = document.getElementById("resultado19");
+let totalBruto = document.getElementById("totalBruto");
+
+// Array para guardar todos los trabajadores 
+let trabajadores = [];
+
+// Función para obtener el turno seleccionado
+function obtenerTurnoSeleccionado() {
+    for (let i = 0; i < turnoRadios.length; i++) {
+        if (turnoRadios[i].checked) return turnoRadios[i].value;
+    }
+    return null;
+}
+
+// Función para calcular salario bruto
+function calcularSalarioBruto(horas, turno) {
+    let tarifa = 0;
+    if (turno === "m") tarifa = 25;
+    else if (turno === "t") tarifa = 30;
+    else if (turno === "n") tarifa = 35;
+
+    return horas * tarifa;
+}
+
+// Función para calcular salario neto
+function calcularSalarioNeto(bruto) {
+    if (bruto < 600) return bruto * 0.92;
+    else if (bruto <= 1000) return bruto * 0.90;
+    else return bruto * 0.88;
+}
+
+// Evento para agregar trabajador
+agregar19.onclick = function () {
+    const nombre = nombre19.value.trim();
+    const apellido = apellidos19.value.trim();
+    const horas = parseFloat(horas19.value);
+    const turno = obtenerTurnoSeleccionado();
+
+    if (!nombre || !apellido || isNaN(horas) || !turno) {
+        alert("Por favor, completa todos los campos.");
+        return;
+    }
+
+    const bruto = calcularSalarioBruto(horas, turno);
+    const neto = calcularSalarioNeto(bruto);
+
+    trabajadores.push({ nombre, apellido, bruto, neto });
+
+    resultado19.innerHTML += 
+        `<p><strong>${nombre} ${apellido}</strong> → Bruto: ${bruto.toFixed(2)} €, Neto: ${neto.toFixed(2)} €</p>`;
+
+    // Limpiar campos
+    nombre19.value = "";
+    apellidos19.value = "";
+    horas19.value = "";
+
+    for (let i = 0; i < turnoRadios.length; i++) {
+        turnoRadios[i].checked = false;
+    }
+
+    nombre19.focus();
+};
+
+// Evento para finalizar y mostrar total
+finalizar19.onclick = function () {
+    const total = trabajadores.reduce((sum, t) => sum + t.bruto, 0);
+    totalBruto.innerHTML = 
+        `<h4>Total de salarios brutos abonados: ${total.toFixed(2)} €</h4>`;
+};
+
+/**EJERCICIO 20 */
+let num20 = document.getElementById("num20");
+let boton20 = document.getElementById("boton20");
+let resultado20 = document.getElementById("resultado20");
+
+let numaletorio = Math.floor(Math.random() * 100) + 1;
+let intentos =  0;
+
+boton20.onclick = function () {
+  const num = parseInt(num20.value);
+
+  if (isNaN(num) || num < 1 || num > 100) {
+    alert("Introduce un número válido entre 1 y 100.");
+    return;
+  }
+
+  intentos++;
+
+  if (num === numaletorio) {
+    resultado20.innerHTML = `<p> ¡Correcto! El número secreto era ${numaletorio}. Lo has adivinado en ${intentos} intento(s).</p>`;
+    boton20.disabled = true;
+    num20.disabled = true;
+  } else if (num < numaletorio) {
+    resultado20.innerHTML = `<p>Mi número es mayor que ${num}.</p>`;
+  } else {
+    resultado20.innerHTML = `<p>Mi número es menor que ${num}.</p>`;
+  }
+
+  num20.value = "";
+  num20.focus();
+};
