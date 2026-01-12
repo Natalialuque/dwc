@@ -409,17 +409,18 @@ Tuple: como un array, pero inmutable.
  *  \s --> espacio en blanco 
  *  \ --> busca literalmente
  */
-    //CORRERO
+
+//CORRERO
    // const regex = /^[\w.-]+@[\w.-]+\.\w{2,}$/;
 
-   //CONTRASEÑA --> 8 numeros, mayuscula,minuscula,numero
+//CONTRASEÑA --> 8 numeros, mayuscula,minuscula,numero
    //const regex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{8,}$/;
     //(?=.*)--> DEBE CONTENER AL MENOS
 
-   //NUMERO DE TELEFONO
+//NUMERO DE TELEFONO
    //const regex = /^\+?\d{7,15}$/;
 
-    //CODIGO POSTAL 
+//CODIGO POSTAL 
     //const regex = /^(?:0[1-9]|[1-4]\d|5[0-2])\d{3}$/;
 
 
