@@ -46,12 +46,12 @@ class profesor extends persona{
     }
 }
 
-function mostrar(profesor){
+function mostrarp(profesor){
     profesores.innerHTML+="Profesor: "+profesor.nombre+", imparte "+profesor.asignatura+" al nivel "+profesor.nivel;
 
 }
 const profesor1 = new profesor("natalia",15,"Mujer","matematicas",5);
-mostrar(profesor1);
+mostrarp(profesor1);
 
 /**EJERCICIO 2 */
 let longitud = document.getElementById("longitud");
@@ -157,33 +157,153 @@ boton6.onclick=function(){
     const texto= texto6.value;
     const tiempo = date6.value;
 
-     eventos.push({ texto, tiempo });
+     recordatorio.push({ texto, tiempo });
 
     // Ordenar por fecha ascendente
+<<<<<<< HEAD
     eventos.sort((a, b) => new Date(a.tiempo) - new Date(b.tiempo)); 
     
+=======
+    recordatorio.sort((a, b) => new Date(a.tiempo) - new Date(b.tiempo)); 
+
+    resultado6.innerHTML = ""; // ← Esto evita duplicados
+    recordatorio.forEach(evento => {
+      const fechaFormateada = new Date(evento.tiempo).toLocaleString();
+      resultado6.innerHTML += `<p><strong>${fechaFormateada}</strong>: ${evento.texto6}</p>`;
+    });
+>>>>>>> 5765cef845fa3524a461286f2cfd979b57d38c5b
 
 }
 
 /**EJERCICIO 7 */
+let texto7 = document.getElementById("texto7");
+let boton7 = document.getElementById("boton7");
+let resultado7 = document.getElementById("resultado7");
 
+boton7.onclick=function(){
+    let caracteres = 0;
+    let posiciones = [];
+
+    for(let i=0; i<texto7.value.length;i++){
+        if(texto7.value[i]=== "-"){
+            caracteres++;
+            posiciones.push(i);
+        }
+    }
+
+    resultado7.innerHTML="Hay "+caracteres+" en total, y en las posiciones: "+posiciones;
+}
 
 /**EJERCICIO 8 */
+let resultado8 = document.getElementById("resultado");
+//ejercicio 
+let array = [];
+
+    function mostrar() {
+      resultado8.innerHTML=array;
+    }
+
+    function insertarFinal() {
+      const valor = document.getElementById("valor").value;
+      if (valor) array.push(valor);
+      mostrar();
+    }
+
+    function insertarInicio() {
+      const valor = document.getElementById("valor").value;
+      if (valor) array.unshift(valor);
+      mostrar();
+    }
+    function borrarPrimero() {
+      array.shift();
+      mostrar();
+    }
+
+    function borrarUltimo() {
+      array.pop();
+      mostrar();
+    }
+
+    function insertarEnPosicion() {
+      const valor = document.getElementById("valor").value;
+      const pos = parseInt(document.getElementById("posicion").value);
+      if (!isNaN(pos) && valor) array.splice(pos, 0, valor);
+      mostrar();
+    }
+
+    function eliminarEnPosicion() {
+      const pos = parseInt(document.getElementById("posicion").value);
+      if (!isNaN(pos)) array.splice(pos, 1);
+      mostrar();
+    }
+    function ordenarAsc() {
+      array.sort((a, b) => a.localeCompare(b, 'es', { numeric: true }));
+      mostrar();
+    }
+
+    function ordenarDesc() {
+      array.sort((a, b) => b.localeCompare(a, 'es', { numeric: true }));
+      mostrar();
+    }
 
 /**EJERCICIO 9 */
+let resultado9 = document.getElementById("resultado9");
+const ancho = window.innerWidth;
+const alto = window.innerHeight;
 
+resultado9.innerHTML="Ancho: "+ancho+" Alto: "+alto;
+window.addEventListener("resize",()=>{
+  resultado9.innerText = "Ancho: "+window.innerWidth+", Alto:"+window.innerHeight;
+
+  if(parseInt(window.innerWidth)<768)
+    resultado9.innerText+=" Movil";
+  else if(parseInt(window.innerWidth)<1024)
+    resultado9.innerText+=", tablet";
+  else
+    resultado9.innerText+=", Desktop";
+});
 /**EJERCICIO 10 */
+let ancho10 = (window.innerWidth-40);
+let alto10 = (window.innerHeight-20);
+let aux= undefined;
+document.getElementById("abrirVentana").onclick = function() {
+    aux = window.open(
+      "../Pruebas/src/usuers.html",
+     "NuevaVenta",
+     "Width="+ancho10+",height="+alto10);
+}
 
 /**EJERCICIO 11 */
+document.getElementById("boton11").onclick = function ()  {
+    aux.resizeTo(600,500);
+}
 
 /**EJERCICIO 12 */
+document.getElementById("atras").onclick = () => {
+    history.back();
+}
+
+document.getElementById("adelante").onclick = () => {
+    history.forward();
+}
 
 /**EJERCICIO 13 */
 
+document.getElementById("enviarArea1").onclick = () => {
+if ((aux)&&(!aux.closed)) {
+    aux.document.getElementById("loginText").value = document.getElementById("texto13").value;
+    aux.focus();
+  } else {
+
+  }
+}
 /**EJERCICIO 14 */
+
 
 /**EJERCICIO 15 */
 
+
 /**EJERCICIO 16 */
+
 
 /**EJERCICIO 17 */
