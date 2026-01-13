@@ -160,10 +160,9 @@ boton6.onclick=function(){
      recordatorio.push({ texto, tiempo });
 
     // Ordenar por fecha ascendente
-<<<<<<< HEAD
     eventos.sort((a, b) => new Date(a.tiempo) - new Date(b.tiempo)); 
     
-=======
+
     recordatorio.sort((a, b) => new Date(a.tiempo) - new Date(b.tiempo)); 
 
     resultado6.innerHTML = ""; // ← Esto evita duplicados
@@ -171,7 +170,6 @@ boton6.onclick=function(){
       const fechaFormateada = new Date(evento.tiempo).toLocaleString();
       resultado6.innerHTML += `<p><strong>${fechaFormateada}</strong>: ${evento.texto6}</p>`;
     });
->>>>>>> 5765cef845fa3524a461286f2cfd979b57d38c5b
 
 }
 
