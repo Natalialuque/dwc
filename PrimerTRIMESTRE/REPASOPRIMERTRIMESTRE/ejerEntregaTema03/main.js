@@ -161,7 +161,7 @@ boton6.onclick=function(){
 
     // Ordenar por fecha ascendente
     eventos.sort((a, b) => new Date(a.tiempo) - new Date(b.tiempo)); 
-
+    
 
 }
 
