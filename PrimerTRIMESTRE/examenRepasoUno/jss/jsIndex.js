@@ -1,295 +1,175 @@
-let ventana = null;
-
-//Abrimos la ventana -> Tambien podemos hacer si da muchos errores window.onload
-// No me funciona el document.body.onload (REVISAR EN CASA)
+// =========================
+// 0. ABRIR VENTANA EMERGENTE
+// =========================
 window.onload = function () {
-  crearNodos();
-  // Ruta, Nombre, Tamaño|Posición
-  ventana = window.open(
-    "registro.html",
-    "Registro",
-    "width=500,height=400,top=100,left=100"
-  );
-
-  ventana.onload = () => {
-    let ePass = createNode("p", "Campo Password esta vacío");
-    ePass.style.color = "red";
-    ventana.document.body.appendChild(ePass);
-    ePass.style.display = "none";
-
-    let eUsu = createNode("p", "Campo Usuario esta vacío");
-    eUsu.style.color = "red";
-    ventana.document.body.appendChild(eUsu);
-    eUsu.style.display = "none";
-
-    let eCarg = createNode("p", "Usuario no valido");
-    eCarg.style.color = "red";
-    ventana.document.body.appendChild(eCarg);
-    eCarg.style.display = "none";
-
-    ventana.document.getElementsByTagName("input")[2].onclick = () => {
-      let valido = true;
-
-      let pass = ventana.document.getElementsByTagName("input")[1];
-      let usu = ventana.document.getElementsByTagName("input")[0];
-
-      if (usu.value === "") {
-        usu.style.border = "3px solid red";
-        valido = false;
-        eUsu.style.display = "inherit";
-      } else {
-        usu.style.border = "1px solid black";
-        eUsu.innerText = "";
-      }
-
-      if (pass.value === "") {
-        pass.style.border = "3px solid red";
-        valido = false;
-        ePass.style.display = "inherit";
-      } else {
-        pass.style.border = "1px solid black";
-        ePass.innerText = "";
-      }
-
-      if (!valido) return;
-
-      let usuValido = usu.value === "encargado" || usu.value === "empleado";
-
-      if (!usuValido) {
-        eCarg.style.display = "inherit";
-        return;
-      }
-
-      // CORRECCIÓN: actualizar label del documento principal
-      let label = window.document.getElementsByTagName("label")[0];
-      label.innerText = "Usuario registrado: " + usu.value;
-
-      ventana.close();
-    };
-  };
+    setTimeout(() => {
+        window.open(
+            "registro.html",
+            "Registro",
+            "width=500,height=400,top=100,left=100"
+        );
+    }, 200);
 };
 
-document.getElementsByTagName("select")[0].onclick = () => {
-  crearNodos();
-};
+// =========================
+// 1. RECIBIR USUARIO DEL POPUP
+// =========================
+window.addEventListener("message", function (e) {
+    if (e.data.tipo === "usuario") {
+        let label = document.getElementsByTagName("label")[0];
+        label.textContent = "Usuario registrado: " + e.data.nombre;
+        comprobarEnviar();
+    }
+});
 
-function crearNodos() {
-  let tipoUsuario = document.getElementsByTagName("select")[0];
-  let tr = document.getElementsByTagName("tr");
-  let ultimoTr = tr[tr.length - 1];
+// =========================
+// 2. CAMPOS DINÁMICOS SEGÚN CARGO
+// =========================
+let selectCargo = document.getElementsByTagName("select")[0];
+selectCargo.onchange = crearCampos;
 
-  while (ultimoTr.firstChild) {
-    ultimoTr.removeChild(ultimoTr.firstChild);
-  }
+function crearCampos() {
+    let filas = document.getElementsByTagName("tr");
+    let ultima = filas[filas.length - 1];
+    ultima.innerHTML = ""; // limpiar
 
-  if (tipoUsuario.value === "empleado") {
-    // crear Nº de incidencia (input)
-    let td1 = createNode("td", "Nº de Incidencias");
-    let tdNI = createNode("td");
-    let nInc = createNode("input");
-    nInc.type = "text";
-    tdNI.appendChild(nInc);
+    if (selectCargo.value === "empleado") {
+        // Nº incidencia
+        let td1 = crear("td", "Nº de Incidencia");
+        let td2 = crear("td");
+        let nInc = crear("input");
+        nInc.type = "text";
+        nInc.onblur = validar;
+        td2.appendChild(nInc);
 
-    // crear Incidencia (textarea)
-    let td2 = createNode("td", "Incidencia");
-    let tdInc = createNode("td");
-    let inc = createNode("textArea");
-    tdInc.appendChild(inc);
+        // Incidencia
+        let td3 = crear("td", "Incidencia");
+        let td4 = crear("td");
+        let area = crear("textarea");
+        td4.appendChild(area);
 
-    ultimoTr.appendChild(td1);
-    ultimoTr.appendChild(tdNI);
+        ultima.append(td1, td2, td3, td4);
 
-    ultimoTr.appendChild(td2);
-    ultimoTr.appendChild(tdInc);
+    } else {
+        // Departamento
+        let td1 = crear("td", "Departamento");
+        let td2 = crear("td");
+        let sel = crear("select");
+        sel.appendChild(crear("option", "Contabilidad"));
+        sel.appendChild(crear("option", "Dirección"));
+        td2.appendChild(sel);
 
-    // CORRECCIÓN: enganchar validación al campo de incidencia creado dinámicamente
-    nInc.onblur = validarCampo;
-  } else if (tipoUsuario.value === "encargado") {
-    //Borrar los elementos
-    while (ultimoTr.firstChild) {
-      ultimoTr.removeChild(ultimoTr.firstChild);
+        // Asunto
+        let td3 = crear("td", "Asunto");
+        let td4 = crear("td");
+        let area = crear("textarea");
+        td4.appendChild(area);
+
+        ultima.append(td1, td2, td3, td4);
     }
 
-    // crear Departamento (select con opciones)
-    let td3 = createNode("td", "Departamento");
-    let tdDep = createNode("td");
-    let selectDept = createNode("select");
-    let opt1 = createNode("option", "Contabilidad");
-    opt1.value = "contabilidad";
-    let opt2 = createNode("option", "Dirección");
-    opt2.value = "direccion";
-    selectDept.appendChild(opt1);
-    selectDept.appendChild(opt2);
-    tdDep.appendChild(selectDept);
-
-    // crear Asunto (textarea)
-    let td4 = createNode("td", "Asunto");
-    let tdAs = createNode("td");
-    let asun = createNode("textArea");
-    tdAs.appendChild(asun);
-
-    ultimoTr.appendChild(td3);
-    ultimoTr.appendChild(tdDep);
-
-    ultimoTr.appendChild(td4);
-    ultimoTr.appendChild(tdAs);
-  }
+    comprobarEnviar();
 }
 
-let enviar = document.getElementsByTagName("input")[0];
-enviar.disabled = true;
-
-// CORRECCIÓN: evitar error por función inexistente
-enviar.onclick = () => {
-  // dispara el submit para que pase por onsubmit
-  document.getElementsByTagName("form")[0].dispatchEvent(new Event("submit", { cancelable: true }));
-};
-
-// enviar.onclick = () => {
-//   // dispara el submit para que pase por onsubmit
-//   if (enviar.disabled) return; // no actúa si está deshabilitado
-
-//   // buscar el radio "si"
-//   let inputs = document.getElementsByTagName("input");
-//   let condSi = null;
-//   for (let i = 0; i < inputs.length; i++) {
-//     if (inputs[i].type === "radio" && inputs[i].value === "si") {
-//       condSi = inputs[i];
-//       break;
-//     }
-//   }
-
-//   if (condSi && condSi.checked) {
-//     alert("Enviando formulario ...");
-//   } else {
-//     alert("Debes marcar 'SI Acepto'");
-//   }
-// };
-
-// Crear mensajes de error al cargar
-let pErrorDni = createNode("p", "DNI inválido");
-pErrorDni.style.color = "red";
-pErrorDni.style.display = "none";
-document.body.appendChild(pErrorDni);
-
-let pErrorEmail = createNode("p", "Email inválido");
-pErrorEmail.style.color = "red";
-pErrorEmail.style.display = "none";
-document.body.appendChild(pErrorEmail);
-
-let pErrorInc = createNode("p", "Nº de incidencia debe ser numérico");
-pErrorInc.style.color = "red";
-pErrorInc.style.display = "none";
-document.body.appendChild(pErrorInc);
-
-// Validación al perder el foco
-function validarCampo(e) {
-  let campo = e.target;
-  let valor = campo.value;
-  let valido = true;
-
-  // CORRECCIÓN: índices reales del HTML (DNI: input[4], email: input[5])
-  if (campo === document.getElementsByTagName("input")[4]) {
-    // DNI
-    let dniV = /^[0-9]{8}[A-Z]$/;
-    valido = dniV.test(valor);
-    pErrorDni.style.display = valido ? "none" : "inherit";
-  }
-
-  if (campo === document.getElementsByTagName("input")[5]) {
-    // Email
-    let emailV = /^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,}$/;
-    valido = emailV.test(valor);
-    pErrorEmail.style.display = valido ? "none" : "inherit";
-  }
-
-  // El campo de incidencia es el último input creado dinámicamente
-  let inputs = document.getElementsByTagName("input");
-  let nIncidencia = inputs[inputs.length - 1];
-  if (campo === nIncidencia) {
-    let nIncV = /^[0-9]+$/;
-    valido = nIncV.test(valor);
-    pErrorInc.style.display = valido ? "none" : "inherit";
-  }
-
-  campo.style.border = valido ? "1px solid black" : "2px solid red";
-  comprobarEnviar();
+function crear(tag, text) {
+    let el = document.createElement(tag);
+    if (text) el.appendChild(document.createTextNode(text));
+    return el;
 }
 
-// Activar botón enviar solo si todo está correcto
+// =========================
+// 3. MENSAJES DE ERROR
+// =========================
+let pDni = msg("DNI inválido");
+let pEmail = msg("Email inválido");
+let pInc = msg("Nº incidencia debe ser numérico");
+
+function msg(t) {
+    let p = document.createElement("p");
+    p.textContent = t;
+    p.style.color = "red";
+    p.style.display = "none";
+    document.body.appendChild(p);
+    return p;
+}
+
+// =========================
+// 4. VALIDACIÓN ÚNICA PARA LOS 3 CAMPOS
+// =========================
+let inputs = document.getElementsByTagName("input");
+let dni = inputs[4];
+let email = inputs[5];
+let btnEnviar = inputs[0];
+
+dni.onblur = validar;
+email.onblur = validar;
+
+function validar(e) {
+    let campo = e.target;
+    let valor = campo.value;
+
+    if (campo === dni) {
+        let ok = /^[0-9]{8}[A-Z]$/.test(valor);
+        pDni.style.display = ok ? "none" : "block";
+        campo.style.border = ok ? "1px solid black" : "2px solid red";
+    }
+
+    if (campo === email) {
+        let ok = /^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,}$/.test(valor);
+        pEmail.style.display = ok ? "none" : "block";
+        campo.style.border = ok ? "1px solid black" : "2px solid red";
+    }
+
+    // Campo dinámico Nº incidencia (solo si empleado)
+    let nInc = document.querySelector("tr:last-child input");
+    if (campo === nInc && selectCargo.value === "empleado") {
+        let ok = /^[0-9]+$/.test(valor);
+        pInc.style.display = ok ? "none" : "block";
+        campo.style.border = ok ? "1px solid black" : "2px solid red";
+    }
+
+    comprobarEnviar();
+}
+
+// =========================
+// 5. ACTIVAR BOTÓN ENVIAR
+// =========================
+btnEnviar.disabled = true;
+
 function comprobarEnviar() {
-  // CORRECCIÓN: usar índices de input en vez de tags inexistentes
-  let inputs = document.getElementsByTagName("input");
-  let dni = inputs[4];
-  let email = inputs[5];
-  let nIncidencia = inputs[inputs.length - 1];
-  let label = document.getElementsByTagName("label")[0];
+    let label = document.getElementsByTagName("label")[0];
 
-  let dniV = /^[0-9]{8}[A-Z]$/;
-  let emailV = /^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,}$/;
-  let nIncV = /^[0-9]+$/;
+    let okDni = /^[0-9]{8}[A-Z]$/.test(dni.value);
+    let okEmail = /^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,}$/.test(email.value);
 
-  if (
-    dni &&
-    email &&
-    nIncidencia &&
-    dniV.test(dni.value) &&
-    emailV.test(email.value) &&
-    nIncV.test(nIncidencia.value) &&
-    label.innerText.includes("Usuario registrado")
-  ) {
-    enviar.disabled = false;
-  } else {
-    enviar.disabled = true;
-  }
-}
+    let nInc = document.querySelector("tr:last-child input");
+    let okInc = true;
 
-// CORRECCIÓN: enganchar validación a los campos fijos con índices correctos
-document.getElementsByTagName("input")[4].addEventListener("blur", validarCampo); // DNI
-document.getElementsByTagName("input")[5].addEventListener("blur", validarCampo); // Email
-// El campo de incidencia se engancha cuando se crea (nInc.onblur en crearNodos)
-
-// onsubmit del formulario
-document.getElementsByTagName("form")[0].onsubmit = function (e) {
-  e.preventDefault();
-  // CORRECCIÓN: localizar radio "si" por tipo y valor
-  let inputs = document.getElementsByTagName("input");
-  let condSi = null;
-  for (let i = 0; i < inputs.length; i++) {
-    if (inputs[i].type === "radio" && inputs[i].value === "si") {
-      condSi = inputs[i];
-      break;
+    if (selectCargo.value === "empleado") {
+        okInc = /^[0-9]+$/.test(nInc?.value || "");
     }
-  }
-  if (condSi && condSi.checked) {
-    alert("Enviando formulario ...");
-  } else {
-    alert("Debes marcar 'SI Acepto'");
-  }
-};
 
-/**
- * Funcion para crear Nodos
- * @param {*} tipoNodo
- * @param {*} tipoTexto
- * @returns
- */
-function createNode(tipoNodo, tipoTexto) {
-  let nodo;
-  let nodoText;
+    let registrado = label.textContent.includes("Usuario registrado");
 
-  switch (arguments.length) {
-    case 0:
-      throw "Se necesitas al menos el tipo de elemento a crear.";
-    case 1:
-      nodo = document.createElement(tipoNodo);
-      nodo.id = "nuevoNodo";
-      break;
-    case 2:
-      nodo = document.createElement(tipoNodo);
-      nodoText = document.createTextNode(tipoTexto);
-      nodo.appendChild(nodoText);
-  }
-
-  return nodo;
+    btnEnviar.disabled = !(okDni && okEmail && okInc && registrado);
 }
+
+// =========================
+// 6. ONSUBMIT
+// =========================
+document.getElementsByTagName("form")[0].onsubmit = function (e) {
+    e.preventDefault();
+
+    let radios = document.getElementsByTagName("input");
+    let si = null;
+
+    for (let r of radios) {
+        if (r.type === "radio" && r.value === "si") si = r;
+    }
+
+    if (si && si.checked) {
+        alert("Enviando formulario ...");
+    } else {
+        alert("Debes marcar 'SI Acepto'");
+    }
+};
