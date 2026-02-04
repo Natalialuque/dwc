@@ -21,33 +21,31 @@ let boton = document.getElementById("boton");
 /**
  * tener en encuenta que hay diferentes sintaxis, la que mas le gusta a joseluis es la siguiente -->
 */
-            //console.log("iniciando"); //para ver funcionamiento del codigo
+            // console.log("iniciando"); //para ver funcionamiento del codigo
 
-            // let myPromise2 = new Promise(function(resolve,reject) {
+            //  let myPromise2 = new Promise(function(resolve,reject) {
 
-            //     //ejecuto codigo asíncrono....
-            //    setTimeout(function(){
+            //      //ejecuto codigo asíncrono....
+            //     setTimeout(function(){
                     
-            //      console.log("Ejecutando Promesa");
-            //     // resolve();//si creemos que va a terminar bien  
-            //      reject(5);//si creemos que va a terminar mal, solo permite pasarle un dato
+            //       console.log("Ejecutando Promesa");
+            //      // resolve();//si creemos que va a terminar bien  
+            //       reject(5);//si creemos que va a terminar mal, solo permite pasarle un dato
 
-            //    },2000);
+            //     },2000);
 
-            // }).then(function(){
+            //  }).then(function(){
 
-            //     //se ejecuta  cuando la promesa ha termiando sin errores...
-            //     console.log("Promesa ha terminado bien");
+            //      //se ejecuta  cuando la promesa ha termiando sin errores...
+            //      console.log("Promesa ha terminado bien");
 
 
-            // }).catch(function (error) {
+            //  }).catch(function (error) {
 
-            //     //se ejecuta cuando la promesa ha termiando con errores
-            //     console.log("Proemsa ha terminado mal con valor:"+error);
+            //      //se ejecuta cuando la promesa ha termiando con errores
+            //      console.log("Proemsa ha terminado mal con valor:"+error);
 
-            // });
-
-            // s
+            //  });
 
 
 /**EJEMPLO DOS */
@@ -57,27 +55,33 @@ let boton = document.getElementById("boton");
         // let input = document.getElementById("num");
         // let boton = document.getElementById("boton");
 
-        // boton.onclick=function(){
-        // let myPromise3 = new Promise(function(resolve,reject) {
+        //  boton.onclick=function(){
+        //  let myPromise3 = new Promise(function(resolve,reject) {
 
-        //         if(input.value>100){
-        //             throw Error("Cantidad mayor de 100");
-        //         }else{
-        //         resolve(input.value)
-        //         }
+        //         console.log("inicia  promesa")
+
+        //          if(texto.value>100){
+        //              throw Error("Cantidad mayor de 100");
+        //             // reject(Error("cantidad mayor que 100 "));   PUEDES PONER ESTO QUE FUFA IGUAL               
+
+        //          }else{
+        //          resolve(texto.value)
+        //          }
             
 
-        // }).then(function(resultado){
+        //  }).then(function(resultado){
 
-        //         info.innerText="Cantidad"+resultado;
+        //          info.innerText="Cantidad"+resultado;
 
-        // }).catch(function (error) {
+        //  }).catch(function (error) {
 
-        //     info.innerHTML="<span style='color:red;'>"+error+"</span>";
+        //      info.innerHTML="<span style='color:red;'>"+error+"</span>";
 
-        // });
+        //  }).finally(function(){
+        //                 console.log("Promesa terminada");
+        //  });
 
-        // }
+        //  }
 
 
 
@@ -276,17 +280,17 @@ let boton = document.getElementById("boton");
 
 
 
-if (typeof Worker) {
-    let myWorker = new Worker("webWorker.js");
+// if (typeof Worker) {
+//     let myWorker = new Worker("webWorker.js");
 
-    myWorker.addEventListener("message",function(event){
-        info.innerHTML = event.data;
-         myWorker.terminate();
-        myWorker = undefined;
-    })
-}
-else {
-    console.error("No Worker!")
-} 
+//     myWorker.addEventListener("message",function(event){
+//         info.innerHTML = event.data;
+//          myWorker.terminate();
+//         myWorker = undefined;
+//     })
+// }
+// else {
+//     console.error("No Worker!")
+// } 
 
-console.log("sigue ejecutando...")
+// console.log("sigue ejecutando...")
