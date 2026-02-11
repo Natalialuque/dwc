@@ -2,8 +2,6 @@
  * QUE SON OBLIGATORIOS
 */
 
-
-
 const body = document.body;
 
 //vamos a meterlo todo dentro de un div 
@@ -40,6 +38,7 @@ crearCampo("text","cuentabancaria","CuentaBancaria",true);
 
 //  Botón enviar 
     const btnEnviar = document.createElement("input");
+    btnEnviar.classList("moreWidth");
     btnEnviar.type = "button";
     btnEnviar.value = "Enviar";
     btnEnviar.id = "botonEnviar";

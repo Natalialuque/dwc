@@ -85,6 +85,7 @@ document.getElementsByName("tipoUsuario")[1].onchange = function(){
 
 
 };
+//gola 
 
 //////////////////////////////////////////////////////////////////////
 /**Cuando clicamos el boton enviar debemos comprobar varias cosas */
