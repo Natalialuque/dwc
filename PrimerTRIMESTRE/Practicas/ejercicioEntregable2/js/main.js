@@ -15,7 +15,7 @@ document.getElementById("bDatosusuarios").onclick=function(){
    
 
     //mostrar indices
-     let datosUsuario = datosUsuarios[usuario].split(",");
+    let datosUsuario = datosUsuarios[usuario].split(",");
     document.getElementById("indice"+usuario).innerHTML=usuario;
 
     //obtener el nombre 
